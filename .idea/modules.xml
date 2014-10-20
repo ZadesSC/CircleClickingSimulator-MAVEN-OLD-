@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CircleClickimgSimulator.iml" filepath="$PROJECT_DIR$/CircleClickimgSimulator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CircleClickingSimulator.iml" filepath="$PROJECT_DIR$/CircleClickingSimulator.iml" />
     </modules>
   </component>
 </project>
