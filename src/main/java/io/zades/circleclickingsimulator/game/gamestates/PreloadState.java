@@ -1,5 +1,6 @@
-package io.zades.circleclickingsimulator.game.gamestate;
+package io.zades.circleclickingsimulator.game.gamestates;
 
+import io.zades.circleclickingsimulator.game.managers.GameStateManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -16,7 +17,7 @@ import java.util.concurrent.Future;
  */
 public class PreloadState extends BasicGameState
 {
-	private final int stateId = StateManager.PRELOAD_STATE;
+	private final int stateId = GameStateManager.PRELOAD_STATE;
 	private final ExecutorService pool = Executors.newFixedThreadPool(2);
 
 	private Future preloader;
@@ -73,7 +74,7 @@ public class PreloadState extends BasicGameState
 		{
 			//TODO: add main menu and song selection states
 			//currently cut straight to playing the song
-			game.enterState(StateManager.PLAY_GAME_STATE);
+			game.enterState(GameStateManager.PLAY_GAME_STATE);
 		}
 	}
 

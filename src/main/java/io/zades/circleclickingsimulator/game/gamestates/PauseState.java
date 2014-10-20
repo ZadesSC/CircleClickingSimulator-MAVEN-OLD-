@@ -1,5 +1,6 @@
-package io.zades.circleclickingsimulator.game.gamestate;
+package io.zades.circleclickingsimulator.game.gamestates;
 
+import io.zades.circleclickingsimulator.game.managers.GameStateManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -11,7 +12,7 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class PauseState extends BasicGameState
 {
-	private int stateId = StateManager.PAUSE_STATE;
+	private int stateId = GameStateManager.PAUSE_STATE;
 	/**
 	 * @see org.newdawn.slick.state.GameState#getID()
 	 */

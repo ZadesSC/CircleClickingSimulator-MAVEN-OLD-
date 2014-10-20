@@ -1,5 +1,6 @@
-package io.zades.circleclickingsimulator.game.gamestate;
+package io.zades.circleclickingsimulator.game.gamestates;
 
+import io.zades.circleclickingsimulator.game.managers.GameStateManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -9,9 +10,9 @@ import org.newdawn.slick.state.StateBasedGame;
 /**
  * Created by Darren on 10/16/2014.
  */
-public class SongSelectState extends BasicGameState
+public class PlayGameState extends BasicGameState
 {
-	private int stateId = StateManager.SONG_SELECT_STATE;
+	private int stateId = GameStateManager.PLAY_GAME_STATE;
 	/**
 	 * @see org.newdawn.slick.state.GameState#getID()
 	 */

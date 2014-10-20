@@ -1,6 +1,6 @@
 package io.zades.circleclickingsimulator.game;
 
-import io.zades.circleclickingsimulator.game.gamestate.StateManager;
+import io.zades.circleclickingsimulator.game.managers.GameStateManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
@@ -11,11 +11,11 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class Game extends StateBasedGame
 {
-	private StateManager stateManager;
+	private GameStateManager gameStateManager;
 	public Game(String title)
 	{
 		super(title);
-		this.stateManager = new StateManager(this);
+		this.gameStateManager = new GameStateManager(this);
 	}
 
 	/**
@@ -27,6 +27,6 @@ public class Game extends StateBasedGame
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException
 	{
-		this.stateManager.initStates(container);
+		this.gameStateManager.initStates(container);
 	}
 }

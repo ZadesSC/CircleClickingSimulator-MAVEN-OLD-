@@ -1,5 +1,6 @@
-package io.zades.circleclickingsimulator.game.gamestate;
+package io.zades.circleclickingsimulator.game.managers;
 
+import io.zades.circleclickingsimulator.game.gamestates.*;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -7,7 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
  * Class contains all logic to manage the state of the game
  * Created by Darren on 10/16/2014.
  */
-public class StateManager
+public class GameStateManager
 {
 	public static final int PRELOAD_STATE 		= 0;
 	public static final int MAIN_MENU_STATE 	= 1;
@@ -20,18 +21,18 @@ public class StateManager
 
 	private StateBasedGame game;
 
-	public StateManager(StateBasedGame game)
+	public GameStateManager(StateBasedGame game)
 	{
 		this.game = game;
 	}
 
 	public void initStates(GameContainer container)
 	{
-		PreloadState 	preloadState 	= new PreloadState();
-		MainMenuState 	mainMenuState 	= new MainMenuState();
+		PreloadState preloadState 	= new PreloadState();
+		MainMenuState mainMenuState 	= new MainMenuState();
 		SongSelectState songSelectState = new SongSelectState();
-		PlayGameState 	playGameState 	= new PlayGameState();
-		OptionsState 	optionsState 	= new OptionsState();
+		PlayGameState playGameState 	= new PlayGameState();
+		OptionsState optionsState 	= new OptionsState();
 		PauseState 		pauseState 		= new PauseState();
 		GameOverState 	gameOverState 	= new GameOverState();
 		SongEndedState 	songEndedState 	= new SongEndedState();
@@ -46,6 +47,6 @@ public class StateManager
 		this.game.addState(songEndedState);
 
 		//Get it functional first blah
-		this.game.enterState(StateManager.PLAY_GAME_STATE);
+		this.game.enterState(GameStateManager.PLAY_GAME_STATE);
 	}
 }
