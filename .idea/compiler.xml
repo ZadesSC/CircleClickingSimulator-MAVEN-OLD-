@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="CircleClickimgSimulator" />
+        <module name="CircleClickingSimulator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="CircleClickimgSimulator" target="1.6" />
+      <module name="CircleClickingSimulator" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

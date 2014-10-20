@@ -125,11 +125,11 @@ public class Skin
 	public static final String NORMAL_SLIDER_TICK		= "normal-slidertick.wav";
 	public static final String NORMAL_SLIDER_WHISTLE	= "normal-sliderwhistle.wav";
 
-	public static final String SOFT_HIT_CLAP				= "soft-hitclap.wav";
+	public static final String SOFT_HIT_CLAP			= "soft-hitclap.wav";
 	public static final String SOFT_HIT_FINISH			= "soft-hitfinish.wav";
 	public static final String SOFT_HIT_NORMAL			= "soft-hitnormal.wav";
 	public static final String SOFT_HIT_WHISTLE			= "soft-hitwhistle.wav";
-	public static final String SOFT_SLIDER_SLIDE			= "soft-sliderslide.wav";
+	public static final String SOFT_SLIDER_SLIDE		= "soft-sliderslide.wav";
 	public static final String SOFT_SLIDER_TICK			= "soft-slidertick.wav";
 	public static final String SOFT_SLIDER_WHISTLE		= "soft-sliderwhistle.wav";
 
