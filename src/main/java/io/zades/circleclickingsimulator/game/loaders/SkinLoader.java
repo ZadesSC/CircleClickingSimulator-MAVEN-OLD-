@@ -1,5 +1,6 @@
 package io.zades.circleclickingsimulator.game.loaders;
 
+import io.zades.circleclickingsimulator.game.managers.SkinManager;
 import io.zades.circleclickingsimulator.game.objects.Skin;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
@@ -18,13 +19,15 @@ public class SkinLoader
 	public static final String DEFAULT_SKIN_PATH = "res/default-skin/";
 
 	private File skinBaseDirectory;
+	private SkinManager skinManager;
 	/**
 	 * Loads all skins from a a non-default skins directory
 	 * @param skinBaseDirectoryPath
 	 */
-	public SkinLoader(String skinBaseDirectoryPath)
+	public SkinLoader(String skinBaseDirectoryPath, SkinManager skinManager)
 	{
 		this.skinBaseDirectory = new File(skinBaseDirectoryPath);
+		this.skinManager = skinManager;
 	}
 
 	/**
@@ -45,7 +48,10 @@ public class SkinLoader
 
 	public Skin loadSkin(String location)
 	{
-		return null;
+		Skin skinToLoad = new Skin();
+		this.loadSkinTextures(location, skinToLoad);
+
+		return skinToLoad;
 	}
 
 	/**
