@@ -63,7 +63,11 @@ public class SkinLoader
 	}
 
 	/**
-	 * Loads all textures (images) of a skin into the skin
+	 * Loads all textures (images) of a skin into the skin.
+	 * This will try to load a file from the folder, if the file does not exist,
+	 * it will try to load the default skin version of the file, if that doesn't
+	 * exist then whoever is running it fucked something up
+	 *
 	 * @param location Location of the files
 	 * @param skin The skin for which the files are to be loaded
 	 */
