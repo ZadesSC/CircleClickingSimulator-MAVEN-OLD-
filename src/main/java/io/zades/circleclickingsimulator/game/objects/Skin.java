@@ -133,6 +133,114 @@ public class Skin
 	public static final String SOFT_SLIDER_TICK			= "soft-slidertick.wav";
 	public static final String SOFT_SLIDER_WHISTLE		= "soft-sliderwhistle.wav";
 
+	//Combined list for easy processing
+	public static final String[] LIST_OF_TEXTURES =
+		{
+				APPROACH_CIRCLE,
+				HIT_CIRCLE,
+				HIT_CIRCLE_OVERLAY,
+				CURSOR,
+				CURSOR_TRAIL,
+				HIT_0,
+				HIT_50,
+				HIT_100,
+				HIT_100_K,
+				HIT_300,
+				HIT_300_K,
+				SLIDER_B_0,
+				SLIDER_FOLLOW_CIRCLE,
+				SLIDER_POINT_10,
+				SLIDER_POINT_30,
+				SLIDER_SCORE_POINT,
+				SPINNER_APPROACH_CIRCLE,
+				SPINNER_CIRCLE,
+				SPINNER_BACKGROUND,
+				SPINNER_CLEAR,
+				SPINNER_METRE,
+				SPINNER_SPIN,
+				FOLLOW_POINT,
+				FOLLOW_POINT_DASH,
+				FOLLOW_POINT_0,
+				FOLLOW_POINT_1,
+				FOLLOW_POINT_2,
+				FOLLOW_POINT_3,
+				FOLLOW_POINT_4,
+				FOLLOW_POINT_5,
+				FOLLOW_POINT_6,
+				FOLLOW_POINT_7,
+				FOLLOW_POINT_8,
+				FOLLOW_POINT_9,
+				DEFAULT_0,
+				DEFAULT_1,
+				DEFAULT_2,
+				DEFAULT_3,
+				DEFAULT_4,
+				DEFAULT_5,
+				DEFAULT_6,
+				DEFAULT_7,
+				DEFAULT_8,
+				DEFAULT_9,
+				SCORE_0,
+				SCORE_1,
+				SCORE_2,
+				SCORE_3,
+				SCORE_4,
+				SCORE_5,
+				SCORE_6,
+				SCORE_7,
+				SCORE_8,
+				SCORE_9,
+				SCORE_DOT,
+				SCORE_PERCENT,
+				SCORE_X,
+				SCOREBAR_BG,
+				READY,
+				COUNT_1,
+				COUNT_2,
+				COUNT_3,
+				GO,
+				BUTTON_LEFT,
+				BUTTON_RIGHT,
+				BUTTON_MIDDLE,
+				MENU_BACK,
+				MENU_BUTTON_BACKGROUND,
+				PAUSE_BACK,
+				PAUSE_CONTINUE,
+				PAUSE_RETRY,
+				PLAY_FIELD,
+				PLAY_SKIP,
+				PLAY_WARNING_ARROW,
+				REVERSE_ARROW,
+				STAR,
+				STAR_2
+		};
+	public static final String[] LIST_OF_SOUNDS =
+		{
+				READYS,
+				COUNT_1_S,
+				COUNT_2_S,
+				COUNT_3_S,
+				GOS,
+				NORMAL_HIT_CLAP,
+				NORMAL_HIT_FINISH,
+				NORMAL_HIT_NORMAL,
+				NORMAL_HIT_WHISTLE,
+				NORMAL_SLIDER_SLIDE,
+				NORMAL_SLIDER_TICK,
+				NORMAL_SLIDER_WHISTLE,
+				SOFT_HIT_CLAP,
+				SOFT_HIT_FINISH,
+				SOFT_HIT_NORMAL,
+				SOFT_HIT_WHISTLE,
+				SOFT_SLIDER_SLIDE,
+				SOFT_SLIDER_TICK,
+				SOFT_SLIDER_WHISTLE
+		};
+
+	//public variables
+	private String skinName;
+
+	//Variables for the class itself
 	//Optional true type font to use instead of defaults
 	private UnicodeFont skinFont;
 
@@ -141,7 +249,57 @@ public class Skin
 
 	public Skin()
 	{
-		this.textureList = new HashMap<String, Texture>();
-		this.audioList = new HashMap<String, Audio>();
+		this.setSkinName("New Skin");
+
+		this.setTextureList(new HashMap<String, Texture>());
+		this.setAudioList(new HashMap<String, Audio>());
+	}
+
+	public Skin(String name)
+	{
+		this.setSkinName(name);
+
+		this.setTextureList(new HashMap<String, Texture>());
+		this.setAudioList(new HashMap<String, Audio>());
+	}
+
+	public String getSkinName()
+	{
+		return skinName;
+	}
+
+	public void setSkinName(String skinName)
+	{
+		this.skinName = skinName;
+	}
+
+	public UnicodeFont getSkinFont()
+	{
+		return skinFont;
+	}
+
+	public void setSkinFont(UnicodeFont skinFont)
+	{
+		this.skinFont = skinFont;
+	}
+
+	public HashMap<String, Texture> getTextureList()
+	{
+		return textureList;
+	}
+
+	public void setTextureList(HashMap<String, Texture> textureList)
+	{
+		this.textureList = textureList;
+	}
+
+	public HashMap<String, Audio> getAudioList()
+	{
+		return audioList;
+	}
+
+	public void setAudioList(HashMap<String, Audio> audioList)
+	{
+		this.audioList = audioList;
 	}
 }
