@@ -81,7 +81,7 @@ public class SkinLoader
 			} catch (IOException e)
 			{
 				Log.warn("Cannot load skin file \"" + textureName + "\" from \"" + location + "\", falling back onto default files", e);
-				e.printStackTrace();
+				//e.printStackTrace();
 
 				try
 				{
@@ -89,7 +89,7 @@ public class SkinLoader
 				} catch (IOException e1)
 				{
 					Log.error("Error loading default skin file \"" + textureName + "\" from \"" + location + "\", congratulations you somehow managed to break the game", e);
-					e1.printStackTrace();
+					//e1.printStackTrace();
 				}
 			}
 
