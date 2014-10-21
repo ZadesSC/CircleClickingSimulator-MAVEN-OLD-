@@ -83,6 +83,19 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-Djava.library.path="${project.build.directory}\natives"</argument>
+                        <argument>-cp</argument>
+                        <classpath />
+                        <argument>io.zades.circleclickingsimulator.driver.Driver</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
