@@ -62,20 +62,38 @@ public class SkinLoader
 		//TODO: finish parsing skins inis
 	}
 
+	/**
+	 * Loads all textures (images) of a skin into the skin
+	 * @param location Location of the files
+	 * @param skin The skin for which the files are to be loaded
+	 */
 	private void loadSkinTextures(String location, Skin skin)
 	{
 		for(String textureName: Skin.LIST_OF_TEXTURES)
 		{
+			Texture tempTexture = null;
+
 			try
 			{
-				Texture tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(location + textureName));
+				tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(location + textureName));
 				skin.getTextureList().put(textureName, tempTexture);
 
 			} catch (IOException e)
 			{
-				Log.error("Error loading skin file \"" + textureName + "\" from \"" + location + "\"", e);
+				Log.warn("Cannot load skin file \"" + textureName + "\" from \"" + location + "\", falling back onto default files", e);
 				e.printStackTrace();
+
+				try
+				{
+					tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(DEFAULT_SKIN_PATH + textureName));
+				} catch (IOException e1)
+				{
+					Log.error("Error loading default skin file \"" + textureName + "\" from \"" + location + "\", congratulations you somehow managed to break the game", e);
+					e1.printStackTrace();
+				}
 			}
+
+			skin.getTextureList().put(textureName, tempTexture);
 		}
 	}
 
