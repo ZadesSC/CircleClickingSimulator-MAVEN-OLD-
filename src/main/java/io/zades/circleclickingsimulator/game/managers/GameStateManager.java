@@ -28,11 +28,11 @@ public class GameStateManager
 
 	public void initStates(GameContainer container)
 	{
-		PreloadState preloadState 	= new PreloadState();
-		MainMenuState mainMenuState 	= new MainMenuState();
+		PreloadState 	preloadState 	= new PreloadState();
+		MainMenuState 	mainMenuState 	= new MainMenuState();
 		SongSelectState songSelectState = new SongSelectState();
-		PlayGameState playGameState 	= new PlayGameState();
-		OptionsState optionsState 	= new OptionsState();
+		PlayGameState 	playGameState 	= new PlayGameState();
+		OptionsState 	optionsState 	= new OptionsState();
 		PauseState 		pauseState 		= new PauseState();
 		GameOverState 	gameOverState 	= new GameOverState();
 		SongEndedState 	songEndedState 	= new SongEndedState();
@@ -46,7 +46,6 @@ public class GameStateManager
 		this.game.addState(gameOverState);
 		this.game.addState(songEndedState);
 
-		//Get it functional first blah
-		this.game.enterState(GameStateManager.PLAY_GAME_STATE);
+		this.game.enterState(GameStateManager.PRELOAD_STATE);
 	}
 }

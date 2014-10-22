@@ -1,6 +1,7 @@
 package io.zades.circleclickingsimulator.game;
 
 import io.zades.circleclickingsimulator.game.managers.GameStateManager;
+import io.zades.circleclickingsimulator.game.managers.SkinManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
@@ -12,10 +13,13 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Game extends StateBasedGame
 {
 	private GameStateManager gameStateManager;
+	private SkinManager skinManager;
+
 	public Game(String title)
 	{
 		super(title);
-		this.gameStateManager = new GameStateManager(this);
+		this.setGameStateManager(new GameStateManager(this));
+		this.setSkinManager(new SkinManager(this));
 	}
 
 	/**
@@ -27,6 +31,26 @@ public class Game extends StateBasedGame
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException
 	{
-		this.gameStateManager.initStates(container);
+		this.getGameStateManager().initStates(container);
+	}
+
+	public GameStateManager getGameStateManager()
+	{
+		return gameStateManager;
+	}
+
+	public void setGameStateManager(GameStateManager gameStateManager)
+	{
+		this.gameStateManager = gameStateManager;
+	}
+
+	public SkinManager getSkinManager()
+	{
+		return skinManager;
+	}
+
+	public void setSkinManager(SkinManager skinManager)
+	{
+		this.skinManager = skinManager;
 	}
 }

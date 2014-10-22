@@ -1,5 +1,6 @@
 package io.zades.circleclickingsimulator.game.gamestates;
 
+import io.zades.circleclickingsimulator.game.Game;
 import io.zades.circleclickingsimulator.game.managers.GameStateManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -41,7 +42,8 @@ public class PreloadState extends BasicGameState
 	public void init(GameContainer container, StateBasedGame game) throws SlickException
 	{
 		//TODO: load splash
-		this.preloader = this.preload();
+		//TODO: CASTS ARE BAD AND I SHOULD FEEL BAD
+		this.preloader = this.preload((Game) game);
 	}
 
 	/**
@@ -82,14 +84,13 @@ public class PreloadState extends BasicGameState
 	 * Used to preload game data asynchronously
 	 * @return True if its done (kinda pointless but whatever
 	 */
-	private Future<Boolean> preload()
+	private Future<Boolean> preload(Game game)
 	{
 		return this.pool.submit(new Callable<Boolean>()
 		{
 			@Override
 			public Boolean call() throws Exception
 			{
-				//TODO: load everything
 				return true;
 			}
 		});

@@ -27,7 +27,7 @@ public final class SkinLoader
 	 */
 	public static Skin loadDefaultSkin()
 	{
-		return loadSkin(DEFAULT_SKIN_PATH);
+		return SkinLoader.loadSkin(DEFAULT_SKIN_PATH);
 	}
 
 	/**
@@ -39,7 +39,7 @@ public final class SkinLoader
 	public static Skin loadSkin(String location)
 	{
 		Skin skinToLoad = new Skin();
-		this.loadSkinTextures(location, skinToLoad);
+		SkinLoader.loadSkinTextures(location, skinToLoad);
 
 		return skinToLoad;
 	}
