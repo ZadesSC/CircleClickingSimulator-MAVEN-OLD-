@@ -1,6 +1,7 @@
 package io.zades.circleclickingsimulator.game.loaders;
 
 import io.zades.circleclickingsimulator.game.objects.Skin;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.Log;
@@ -78,7 +79,7 @@ public final class SkinLoader
 				tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(location + textureName));
 				skin.getTextureList().put(textureName, tempTexture);
 
-				Log.debug("Loaded skin file \"" + textureName + "\" from \"" + location + "\"");
+				Log.debug("Adding skin file \"" + textureName + "\" from \"" + location + "\" to queue");
 
 			} catch (Exception e)
 			{
@@ -88,6 +89,9 @@ public final class SkinLoader
 				try
 				{
 					tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(DEFAULT_SKIN_PATH + textureName));
+
+					Log.debug("Adding skin file \"" + textureName + "\" from \"" + DEFAULT_SKIN_PATH + "\" to queue");
+
 				} catch (Exception e1)
 				{
 					Log.error("Error loading default skin file \"" + textureName + "\" from \"" + location + "\", congratulations you somehow managed to break the game", e);

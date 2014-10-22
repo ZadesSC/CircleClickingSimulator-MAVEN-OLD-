@@ -32,7 +32,6 @@ public class Game extends StateBasedGame
 	public void initStatesList(GameContainer container)throws SlickException
 	{
 		this.getGameStateManager().initStates(container);
-		this.getSkinManager().initAllSkins();
 	}
 
 	public GameStateManager getGameStateManager()

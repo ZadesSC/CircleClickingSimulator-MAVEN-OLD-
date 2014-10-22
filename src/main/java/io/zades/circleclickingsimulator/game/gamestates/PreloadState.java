@@ -5,9 +5,13 @@ import io.zades.circleclickingsimulator.game.managers.GameStateManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.loading.DeferredResource;
+import org.newdawn.slick.loading.LoadingList;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.util.Log;
 
+import java.io.IOException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,6 +26,8 @@ public class PreloadState extends BasicGameState
 	private final ExecutorService pool = Executors.newFixedThreadPool(2);
 
 	private Future preloader;
+
+	private DeferredResource nextResource;
 	/**
 	 * @see org.newdawn.slick.state.GameState#getID()
 	 */
@@ -43,7 +49,9 @@ public class PreloadState extends BasicGameState
 	{
 		//TODO: load splash
 		//TODO: CASTS ARE BAD AND I SHOULD FEEL BAD
-		this.preloader = this.preload((Game) game);
+		//this.preloader = this.preload((Game) game);
+		LoadingList.setDeferredLoading(true);
+		((Game)game).getSkinManager().initAllSkins();
 	}
 
 	/**
@@ -57,7 +65,16 @@ public class PreloadState extends BasicGameState
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException
 	{
+		if (nextResource != null) {
+			g.drawString("Loading: "+nextResource.getDescription(), 100, 100);
+		}
 
+		int total = LoadingList.get().getTotalResources();
+		int loaded = LoadingList.get().getTotalResources() - LoadingList.get().getRemainingResources();
+
+		float bar = loaded / (float) total;
+		g.fillRect(100,150,loaded*5,20);
+		g.drawRect(100,150,total*5,20);
 	}
 
 	/**
@@ -72,25 +89,45 @@ public class PreloadState extends BasicGameState
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException
 	{
-		if(this.preloader.isDone())
+		if (nextResource != null) {
+			try {
+				nextResource.load();
+
+				Log.debug("Loading skin resource: " + nextResource.getDescription());
+				// slow down loading for example purposes
+				//try { Thread.sleep(10); } catch (Exception e) {}
+
+			} catch (IOException e) {
+				throw new SlickException("Failed to load: "+nextResource.getDescription(), e);
+			}
+
+			nextResource = null;
+		}
+
+		if (LoadingList.get().getRemainingResources() > 0) {
+			nextResource = LoadingList.get().getNext();
+		}
+		else
 		{
-			//TODO: add main menu and song selection states
-			//currently cut straight to playing the song
+			//ゲームを始めましょうか
+			//Short circuit to play game for now
 			game.enterState(GameStateManager.PLAY_GAME_STATE);
 		}
 	}
 
 	/**
 	 * Used to preload game data asynchronously
+	 * TODO: consider using the spring framework
 	 * @return True if its done (kinda pointless but whatever
 	 */
-	private Future<Boolean> preload(Game game)
+	private Future<Boolean> preload(final Game game)
 	{
 		return this.pool.submit(new Callable<Boolean>()
 		{
 			@Override
 			public Boolean call() throws Exception
 			{
+				game.getSkinManager().initAllSkins();
 				return true;
 			}
 		});
