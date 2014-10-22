@@ -25,8 +25,6 @@ public class PreloadState extends BasicGameState
 	private final int stateId = GameStateManager.PRELOAD_STATE;
 	private final ExecutorService pool = Executors.newFixedThreadPool(2);
 
-	private Future preloader;
-
 	private DeferredResource nextResource;
 	/**
 	 * @see org.newdawn.slick.state.GameState#getID()
