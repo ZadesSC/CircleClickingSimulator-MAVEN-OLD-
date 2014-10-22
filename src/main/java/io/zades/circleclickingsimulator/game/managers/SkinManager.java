@@ -26,13 +26,12 @@ public class SkinManager
 
 		this.setListOfSkins(new HashMap<String, Skin>());
 
-		this.initDefaultSkin();
-		this.setCurrentSkin(getDefaultSkin());
 	}
 
-	private void initAllSkins()
+	public void initAllSkins()
 	{
-
+		this.initDefaultSkin();
+		this.setCurrentSkin(getDefaultSkin());
 	}
 
 	private Skin initDefaultSkin()

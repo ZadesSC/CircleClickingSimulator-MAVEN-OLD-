@@ -29,9 +29,10 @@ public class Game extends StateBasedGame
 	 * @throws org.newdawn.slick.SlickException Indicates a failure to initialise the state based game resources
 	 */
 	@Override
-	public void initStatesList(GameContainer container) throws SlickException
+	public void initStatesList(GameContainer container)throws SlickException
 	{
 		this.getGameStateManager().initStates(container);
+		this.getSkinManager().initAllSkins();
 	}
 
 	public GameStateManager getGameStateManager()

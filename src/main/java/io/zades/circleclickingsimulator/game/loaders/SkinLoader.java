@@ -78,7 +78,9 @@ public final class SkinLoader
 				tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(location + textureName));
 				skin.getTextureList().put(textureName, tempTexture);
 
-			} catch (IOException e)
+				Log.debug("Loaded skin file \"" + textureName + "\" from \"" + location + "\"");
+
+			} catch (Exception e)
 			{
 				Log.warn("Cannot load skin file \"" + textureName + "\" from \"" + location + "\", falling back onto default files", e);
 				//e.printStackTrace();
@@ -86,9 +88,10 @@ public final class SkinLoader
 				try
 				{
 					tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(DEFAULT_SKIN_PATH + textureName));
-				} catch (IOException e1)
+				} catch (Exception e1)
 				{
 					Log.error("Error loading default skin file \"" + textureName + "\" from \"" + location + "\", congratulations you somehow managed to break the game", e);
+					System.exit(-1);
 					//e1.printStackTrace();
 				}
 			}

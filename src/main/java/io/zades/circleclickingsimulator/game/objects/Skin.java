@@ -37,7 +37,7 @@ public class Skin
 	public static final String SLIDER_POINT_30 			= "sliderpoint30.png";
 	public static final String SLIDER_SCORE_POINT 		= "sliderscorepoint.png";
 
-	public static final String SPINNER_APPROACH_CIRCLE 	= "spinner-approachcircle";
+	public static final String SPINNER_APPROACH_CIRCLE 	= "spinner-approachcircle.png";
 	public static final String SPINNER_CIRCLE 			= "spinner-circle.png";
 	public static final String SPINNER_BACKGROUND 		= "spinner-background.png";
 	public static final String SPINNER_CLEAR 			= "spinner-clear.png";
@@ -100,10 +100,10 @@ public class Skin
 
 	public static final String PAUSE_BACK 				= "pause-back.png";
 	public static final String PAUSE_CONTINUE 			= "pause-continue.png";
-	public static final String PAUSE_RETRY 				= "pauseRetry.png";
+	public static final String PAUSE_RETRY 				= "pause-retry.png";
 
 	public static final String PLAY_FIELD 				= "playfield.png";
-	public static final String PLAY_SKIP 				= "playskip.png";
+	public static final String PLAY_SKIP 				= "play-skip.png";
 	public static final String PLAY_WARNING_ARROW 		= "play-warningarrow.png";
 	public static final String REVERSE_ARROW 			= "reversearrow.png";
 
@@ -157,6 +157,8 @@ public class Skin
 				SPINNER_BACKGROUND,
 				SPINNER_CLEAR,
 				SPINNER_METRE,
+				SPINNER_OSU,
+				SPINNER_RPM,
 				SPINNER_SPIN,
 				FOLLOW_POINT,
 				FOLLOW_POINT_DASH,
