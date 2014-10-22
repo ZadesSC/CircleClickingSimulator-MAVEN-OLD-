@@ -12,7 +12,7 @@ public class SkinManager
 	//The default skin
 	public Skin defaultSkin;
 
-	//The list of skins, the default skin should be included
+	//The list of skins, the default skin should also be included
 	public ArrayList<Skin> listOfSkins;
 
 	public SkinManager()

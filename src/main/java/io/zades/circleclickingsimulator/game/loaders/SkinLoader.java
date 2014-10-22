@@ -1,52 +1,42 @@
 package io.zades.circleclickingsimulator.game.loaders;
 
-import io.zades.circleclickingsimulator.game.managers.SkinManager;
 import io.zades.circleclickingsimulator.game.objects.Skin;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.Log;
 import org.newdawn.slick.util.ResourceLoader;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
- * This loader that loads skin files
+ * This loader that loads skin files.
  * Created by Darren on 10/20/2014.
  */
-public class SkinLoader
+public final class SkinLoader
 {
 	public static final String DEFAULT_SKIN_PATH = "res/default-skin/";
 
-	private File skinBaseDirectory;
-	private SkinManager skinManager;
-	/**
-	 * Loads all skins from a a non-default skins directory
-	 * @param skinBaseDirectoryPath
-	 */
-	public SkinLoader(String skinBaseDirectoryPath, SkinManager skinManager)
+	private SkinLoader()
 	{
-		this.skinBaseDirectory = new File(skinBaseDirectoryPath);
-		this.skinManager = skinManager;
-	}
-
-	/**
-	 * Loads all skins from the default directory
-	 */
-	public SkinLoader()
-	{
-
 	}
 
 	/**
 	 * Loads the default skin
+	 *
+	 * @return The loaded default skin
 	 */
-	public Skin loadDefaultSkin()
+	public static Skin loadDefaultSkin()
 	{
-		return this.loadSkin(DEFAULT_SKIN_PATH);
+		return loadSkin(DEFAULT_SKIN_PATH);
 	}
 
-	public Skin loadSkin(String location)
+	/**
+	 * Loads a skin given its directory
+	 *
+	 * @param location The directory of the skin
+	 * @return The loaded skin
+	 */
+	public static Skin loadSkin(String location)
 	{
 		Skin skinToLoad = new Skin();
 		this.loadSkinTextures(location, skinToLoad);
@@ -58,26 +48,26 @@ public class SkinLoader
 	 * Loads a skin given its directory
 	 * @param skinDirectoryPath
 	 */
-	public void loadAllSkisn(String skinDirectoryPath)
+	public static void loadAllSkisn(String skinDirectoryPath)
 	{
-
+		//TODO: maybe write this method or just delete it and let the manager handle individual skin loading
 	}
 
-	private void readSkinIni(String location, Skin skin)
+	private static void readSkinIni(String location, Skin skin)
 	{
-		//TODO: finish parsing skins inis
+		//TODO: finish parsing skins inits
 	}
 
 	/**
 	 * Loads all textures (images) of a skin into the skin.
 	 * This will try to load a file from the folder, if the file does not exist,
 	 * it will try to load the default skin version of the file, if that doesn't
-	 * exist then whoever is running it fucked something up
+	 * exist then whoever is running the program fucked something up
 	 *
 	 * @param location Location of the files
 	 * @param skin The skin for which the files are to be loaded
 	 */
-	private void loadSkinTextures(String location, Skin skin)
+	private static void loadSkinTextures(String location, Skin skin)
 	{
 		for(String textureName: Skin.LIST_OF_TEXTURES)
 		{
@@ -107,8 +97,8 @@ public class SkinLoader
 		}
 	}
 
-	private void loadSkinSounds(String location, Skin skin)
+	private static void loadSkinSounds(String location, Skin skin)
 	{
-
+		//TODO: finish loading in sounds
 	}
 }
