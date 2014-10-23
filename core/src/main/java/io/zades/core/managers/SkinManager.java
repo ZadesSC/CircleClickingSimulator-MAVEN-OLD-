@@ -1,9 +1,7 @@
-package io.zades.circleclickingsimulator.game.managers;
+package io.zades.core.managers;
 
-import io.zades.circleclickingsimulator.game.Game;
-import io.zades.circleclickingsimulator.game.loaders.SkinLoader;
-import io.zades.circleclickingsimulator.game.objects.Skin;
-import org.newdawn.slick.state.StateBasedGame;
+import io.zades.core.loaders.SkinLoader;
+import io.zades.core.objects.Skin;
 
 import java.util.HashMap;
 
@@ -12,7 +10,6 @@ import java.util.HashMap;
  */
 public class SkinManager
 {
-	private StateBasedGame game;
 
 	private Skin currentSkin;
 	private Skin defaultSkin;
@@ -20,10 +17,8 @@ public class SkinManager
 	//The list of skins, the default skin should also be included
 	private HashMap<String, Skin> listOfSkins;
 
-	public SkinManager(StateBasedGame game)
+	public SkinManager()
 	{
-		this.game = game;
-
 		this.setListOfSkins(new HashMap<String, Skin>());
 
 	}

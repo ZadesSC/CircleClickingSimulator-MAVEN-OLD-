@@ -1,14 +1,6 @@
-package io.zades.circleclickingsimulator.game.loaders;
+package io.zades.core.loaders;
 
-import io.zades.circleclickingsimulator.game.objects.Skin;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.opengl.Texture;
-import org.newdawn.slick.opengl.TextureLoader;
-import org.newdawn.slick.util.Log;
-import org.newdawn.slick.util.ResourceLoader;
-
-import java.io.IOException;
-
+import  io.zades.core.objects.Skin;
 /**
  * This loader that loads skin files.
  * Created by Darren on 10/20/2014.
@@ -70,38 +62,38 @@ public final class SkinLoader
 	 */
 	private static void loadSkinTextures(String location, Skin skin)
 	{
-		for(String textureName: Skin.LIST_OF_TEXTURES)
-		{
-			Texture tempTexture = null;
-
-			try
-			{
-				tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(location + textureName));
-				skin.getTextureList().put(textureName, tempTexture);
-
-				Log.debug("Adding skin file \"" + textureName + "\" from \"" + location + "\" to queue");
-
-			} catch (Exception e)
-			{
-				Log.warn("Cannot load skin file \"" + textureName + "\" from \"" + location + "\", falling back onto default files", e);
-				//e.printStackTrace();
-
-				try
-				{
-					tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(DEFAULT_SKIN_PATH + textureName));
-
-					Log.debug("Adding skin file \"" + textureName + "\" from \"" + DEFAULT_SKIN_PATH + "\" to queue");
-
-				} catch (Exception e1)
-				{
-					Log.error("Error loading default skin file \"" + textureName + "\" from \"" + location + "\", congratulations you somehow managed to break the game", e);
-					System.exit(-1);
-					//e1.printStackTrace();
-				}
-			}
-
-			skin.getTextureList().put(textureName, tempTexture);
-		}
+//		for(String textureName: Skin.LIST_OF_TEXTURES)
+//		{
+//			Texture tempTexture = null;
+//
+//			try
+//			{
+//				tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(location + textureName));
+//				skin.getTextureList().put(textureName, tempTexture);
+//
+//				Log.debug("Adding skin file \"" + textureName + "\" from \"" + location + "\" to queue");
+//
+//			} catch (Exception e)
+//			{
+//				Log.warn("Cannot load skin file \"" + textureName + "\" from \"" + location + "\", falling back onto default files", e);
+//				e.printStackTrace();
+//
+//				try
+//				{
+//					tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(DEFAULT_SKIN_PATH + textureName));
+//
+//					Log.debug("Adding skin file \"" + textureName + "\" from \"" + DEFAULT_SKIN_PATH + "\" to queue");
+//
+//				} catch (Exception e1)
+//				{
+//					Log.error("Error loading default skin file \"" + textureName + "\" from \"" + location + "\", congratulations you somehow managed to break the game", e);
+//					System.exit(-1);
+//					//e1.printStackTrace();
+//				}
+//			}
+//
+//			skin.getTextureList().put(textureName, tempTexture);
+//		}
 	}
 
 	private static void loadSkinSounds(String location, Skin skin)

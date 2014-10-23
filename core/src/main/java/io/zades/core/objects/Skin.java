@@ -1,10 +1,4 @@
-package io.zades.circleclickingsimulator.game.objects;
-
-import org.newdawn.slick.UnicodeFont;
-import org.newdawn.slick.openal.Audio;
-import org.newdawn.slick.opengl.Texture;
-
-import java.util.HashMap;
+package io.zades.core.objects;
 
 /**
  * Object representing a skin
@@ -244,64 +238,15 @@ public class Skin
 
 	//Variables for the class itself
 	//Optional true type font to use instead of defaults
-	private UnicodeFont skinFont;
 
-	private HashMap<String, Texture> textureList;
-	private HashMap<String, Audio> audioList;
 
 	public Skin()
 	{
-		this.setSkinName("New Skin");
 
-		this.setTextureList(new HashMap<String, Texture>());
-		this.setAudioList(new HashMap<String, Audio>());
 	}
 
 	public Skin(String name)
 	{
-		this.setSkinName(name);
 
-		this.setTextureList(new HashMap<String, Texture>());
-		this.setAudioList(new HashMap<String, Audio>());
-	}
-
-	public String getSkinName()
-	{
-		return skinName;
-	}
-
-	public void setSkinName(String skinName)
-	{
-		this.skinName = skinName;
-	}
-
-	public UnicodeFont getSkinFont()
-	{
-		return skinFont;
-	}
-
-	public void setSkinFont(UnicodeFont skinFont)
-	{
-		this.skinFont = skinFont;
-	}
-
-	public HashMap<String, Texture> getTextureList()
-	{
-		return textureList;
-	}
-
-	public void setTextureList(HashMap<String, Texture> textureList)
-	{
-		this.textureList = textureList;
-	}
-
-	public HashMap<String, Audio> getAudioList()
-	{
-		return audioList;
-	}
-
-	public void setAudioList(HashMap<String, Audio> audioList)
-	{
-		this.audioList = audioList;
 	}
 }

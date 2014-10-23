@@ -1,4 +1,4 @@
-package io.zades.circleclickingsimulator.game.managers;
+package io.zades.core.managers;
 
 /**
  * Created by Darren on 10/22/2014.

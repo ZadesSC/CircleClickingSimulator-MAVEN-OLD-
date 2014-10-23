@@ -1,4 +1,4 @@
-package io.zades.circleclickingsimulator.game.loaders;
+package io.zades.core.loaders;
 
 /**
  * Created by Darren on 10/22/2014.
