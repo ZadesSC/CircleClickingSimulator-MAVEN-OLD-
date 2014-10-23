@@ -22,11 +22,23 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="ccs-android" />
+        <module name="ccs-core" />
+        <module name="ccs-desktop" />
         <module name="CircleClickimgSimulator" />
-        <module name="CircleClickingSimulator" />
+      </profile>
+      <profile default="false" name="Annotation profile for ccs-ios" enabled="true">
+        <sourceOutputDir name="bin\generated-sources\annotations" />
+        <sourceTestOutputDir name="bin\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ccs-ios" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ccs-core" target="1.6" />
+      <module name="ccs-desktop" target="1.6" />
+      <module name="ccs-html" target="1.6" />
       <module name="CircleClickimgSimulator" target="1.6" />
       <module name="CircleClickingSimulator" target="1.6" />
     </bytecodeTargetLevel>

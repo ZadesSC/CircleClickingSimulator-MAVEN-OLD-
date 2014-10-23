@@ -1,6 +1,6 @@
 package io.zades.core.loaders;
 
-import  io.zades.core.objects.Skin;
+import io.zades.core.objects.CCSSkin;
 /**
  * This loader that loads skin files.
  * Created by Darren on 10/20/2014.
@@ -18,7 +18,7 @@ public final class SkinLoader
 	 *
 	 * @return The loaded default skin
 	 */
-	public static Skin loadDefaultSkin()
+	public static CCSSkin loadDefaultSkin()
 	{
 		return SkinLoader.loadSkin(DEFAULT_SKIN_PATH);
 	}
@@ -29,12 +29,12 @@ public final class SkinLoader
 	 * @param location The directory of the skin
 	 * @return The loaded skin
 	 */
-	public static Skin loadSkin(String location)
+	public static CCSSkin loadSkin(String location)
 	{
-		Skin skinToLoad = new Skin();
-		SkinLoader.loadSkinTextures(location, skinToLoad);
+		CCSSkin CCSSkinToLoad = new CCSSkin();
+		SkinLoader.loadSkinTextures(location, CCSSkinToLoad);
 
-		return skinToLoad;
+		return CCSSkinToLoad;
 	}
 
 	/**
@@ -46,7 +46,7 @@ public final class SkinLoader
 		//TODO: maybe write this method or just delete it and let the manager handle individual skin loading
 	}
 
-	private static void readSkinIni(String location, Skin skin)
+	private static void readSkinIni(String location, CCSSkin CCSSkin)
 	{
 		//TODO: finish parsing skins inits
 	}
@@ -58,9 +58,9 @@ public final class SkinLoader
 	 * exist then whoever is running the program fucked something up
 	 *
 	 * @param location Location of the files
-	 * @param skin The skin for which the files are to be loaded
+	 * @param CCSSkin The skin for which the files are to be loaded
 	 */
-	private static void loadSkinTextures(String location, Skin skin)
+	private static void loadSkinTextures(String location, CCSSkin CCSSkin)
 	{
 //		for(String textureName: Skin.LIST_OF_TEXTURES)
 //		{
@@ -96,7 +96,7 @@ public final class SkinLoader
 //		}
 	}
 
-	private static void loadSkinSounds(String location, Skin skin)
+	private static void loadSkinSounds(String location, CCSSkin CCSSkin)
 	{
 		//TODO: finish loading in sounds
 	}

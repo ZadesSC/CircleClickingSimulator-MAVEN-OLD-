@@ -4,7 +4,7 @@ package io.zades.core.objects;
  * Object representing a skin
  * Created by Darren on 10/20/2014.
  */
-public class Skin
+public class CCSSkin
 {
 
 	//TODO: add all other data file pathes, currently it only has the most basic items
@@ -240,12 +240,12 @@ public class Skin
 	//Optional true type font to use instead of defaults
 
 
-	public Skin()
+	public CCSSkin()
 	{
 
 	}
 
-	public Skin(String name)
+	public CCSSkin(String name)
 	{
 
 	}
