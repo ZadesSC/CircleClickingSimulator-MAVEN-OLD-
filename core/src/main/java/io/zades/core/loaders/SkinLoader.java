@@ -7,6 +7,7 @@ import io.zades.core.objects.CCSSkin;
  */
 public final class SkinLoader
 {
+	//TODO: move this to skin
 	public static final String DEFAULT_SKIN_PATH = "res/default-skin/";
 
 	private SkinLoader()
