@@ -63,6 +63,7 @@ public final class SkinLoader
 	 */
 	private static void loadSkinTextures(String location, CCSSkin CCSSkin)
 	{
+		//TODO: write stuiff
 //		for(String textureName: Skin.LIST_OF_TEXTURES)
 //		{
 //			Texture tempTexture = null;
