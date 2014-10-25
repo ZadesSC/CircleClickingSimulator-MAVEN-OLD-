@@ -1,5 +1,6 @@
 package io.zades.core.gamestates;
 
+import io.zades.core.CCSCore;
 import io.zades.core.managers.GameStateManager;
 
 /**
@@ -7,9 +8,15 @@ import io.zades.core.managers.GameStateManager;
  */
 public class PreloadGameState extends AbstractGameState
 {
-	public PreloadGameState()
+	public PreloadGameState(CCSCore game)
 	{
-		super(GameStateManager.GAME_STATE.PRELOAD);
+		super(GameStateManager.GAME_STATE.PRELOAD, game);
+	}
+
+	@Override
+	public void render(float delta)
+	{
+		super.render(delta);
 	}
 
 	/**

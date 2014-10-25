@@ -1,5 +1,11 @@
 package io.zades.core.managers;
 
+import io.zades.core.CCSCore;
+import io.zades.core.gamestates.AbstractGameState;
+import io.zades.core.gamestates.PreloadGameState;
+
+import java.util.HashMap;
+
 /**
  * Class contains all logic to manage the state of the game
  * Created by Darren on 10/16/2014.
@@ -18,16 +24,20 @@ public class GameStateManager
 		SONG_WON_
 	}
 
-//	private StateBasedGame game;
-//
-//	public GameStateManager(StateBasedGame game)
-//	{
-//		this.game = game;
-//	}
+	private HashMap<GAME_STATE, AbstractGameState> gameStateList;
+	private GAME_STATE currentState;
+	private CCSCore game;
+
+	public GameStateManager(CCSCore game)
+	{
+		this.game = game;
+		this.gameStateList = new HashMap<GAME_STATE, AbstractGameState>();
+		this.currentState = null;
+	}
 
 	public void initStates()
 	{
-//		PreloadState 	preloadState 	= new PreloadState();
+		PreloadGameState preloadState 	= new PreloadGameState(game);
 //		MainMenuState 	mainMenuState 	= new MainMenuState();
 //		SongSelectState songSelectState = new SongSelectState();
 //		PlayGameState 	playGameState 	= new PlayGameState();
@@ -35,16 +45,24 @@ public class GameStateManager
 //		PauseState 		pauseState 		= new PauseState();
 //		GameOverState 	gameOverState 	= new GameOverState();
 //		SongEndedState 	songEndedState 	= new SongEndedState();
-//
-//		this.game.addState(preloadState);
-//		this.game.addState(mainMenuState);
-//		this.game.addState(songSelectState);
-//		this.game.addState(playGameState);
-//		this.game.addState(optionsState);
-//		this.game.addState(pauseState);
-//		this.game.addState(gameOverState);
-//		this.game.addState(songEndedState);
-//
-//		this.game.enterState(GameStateManager.PRELOAD_STATE);
+
+		this.getGameStateList().put(GAME_STATE.PRELOAD, preloadState);
+
+		this.setCurrentState(GAME_STATE.PRELOAD);
+	}
+
+	public HashMap<GAME_STATE, AbstractGameState> getGameStateList()
+	{
+		return gameStateList;
+	}
+
+	public AbstractGameState getCurrentState()
+	{
+		return this.gameStateList.get(this.currentState);
+	}
+
+	public void setCurrentState(GAME_STATE currentState)
+	{
+		this.currentState = currentState;
 	}
 }

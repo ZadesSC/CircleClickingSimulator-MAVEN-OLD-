@@ -1,5 +1,9 @@
 package io.zades.core.objects;
 
+import com.badlogic.gdx.graphics.Texture;
+
+import java.util.HashMap;
+
 /**
  * Object representing a skin
  * Created by Darren on 10/20/2014.
@@ -235,18 +239,22 @@ public class CCSSkin
 
 	//public variables
 	private String skinName;
+	private String location;
 
-	//Variables for the class itself
-	//Optional true type font to use instead of defaults
-
+	private HashMap<String, Texture> listOfTextures;
 
 	public CCSSkin()
 	{
-
+		this.setListOfTextures(new HashMap<String, Texture>());
 	}
 
-	public CCSSkin(String name)
+	public HashMap<String, Texture> getListOfTextures()
 	{
+		return listOfTextures;
+	}
 
+	public void setListOfTextures(HashMap<String, Texture> listOfTextures)
+	{
+		this.listOfTextures = listOfTextures;
 	}
 }

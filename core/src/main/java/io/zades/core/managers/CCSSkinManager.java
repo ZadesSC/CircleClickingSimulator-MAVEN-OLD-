@@ -1,5 +1,6 @@
 package io.zades.core.managers;
 
+import io.zades.core.CCSCore;
 import io.zades.core.loaders.SkinLoader;
 import io.zades.core.objects.CCSSkin;
 
@@ -10,15 +11,16 @@ import java.util.HashMap;
  */
 public class CCSSkinManager
 {
-
+	private CCSCore game;
 	private CCSSkin currentCCSSkin;
 	private CCSSkin defaultCCSSkin;
 
 	//The list of skins, the default skin should also be included
 	private HashMap<String, CCSSkin> listOfSkins;
 
-	public CCSSkinManager()
+	public CCSSkinManager(CCSCore game)
 	{
+		this.game = game;
 		this.setListOfSkins(new HashMap<String, CCSSkin>());
 
 	}

@@ -3,6 +3,7 @@ package io.zades.core.gamestates;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import io.zades.core.CCSCore;
 import io.zades.core.managers.GameStateManager;
 
 /**
@@ -11,10 +12,12 @@ import io.zades.core.managers.GameStateManager;
 public abstract class AbstractGameState implements Screen
 {
 	private GameStateManager.GAME_STATE gameState;
+	private CCSCore game;
 
-	public AbstractGameState(GameStateManager.GAME_STATE gameState)
+	public AbstractGameState(GameStateManager.GAME_STATE gameState, CCSCore game)
 	{
 		this.gameState = gameState;
+		this.game = game;
 	}
 
 	@Override

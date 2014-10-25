@@ -1,5 +1,6 @@
 package io.zades.core.loaders;
 
+import com.badlogic.gdx.Gdx;
 import io.zades.core.objects.CCSSkin;
 /**
  * This loader that loads skin files.
@@ -7,7 +8,6 @@ import io.zades.core.objects.CCSSkin;
  */
 public final class SkinLoader
 {
-	//TODO: move this to skin
 	public static final String DEFAULT_SKIN_PATH = "res/default-skin/";
 
 	private SkinLoader()
@@ -63,39 +63,32 @@ public final class SkinLoader
 	 */
 	private static void loadSkinTextures(String location, CCSSkin CCSSkin)
 	{
-		//TODO: write stuiff
-//		for(String textureName: Skin.LIST_OF_TEXTURES)
-//		{
-//			Texture tempTexture = null;
-//
-//			try
-//			{
-//				tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(location + textureName));
-//				skin.getTextureList().put(textureName, tempTexture);
-//
-//				Log.debug("Adding skin file \"" + textureName + "\" from \"" + location + "\" to queue");
-//
-//			} catch (Exception e)
-//			{
-//				Log.warn("Cannot load skin file \"" + textureName + "\" from \"" + location + "\", falling back onto default files", e);
-//				e.printStackTrace();
-//
-//				try
-//				{
-//					tempTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(DEFAULT_SKIN_PATH + textureName));
-//
-//					Log.debug("Adding skin file \"" + textureName + "\" from \"" + DEFAULT_SKIN_PATH + "\" to queue");
-//
-//				} catch (Exception e1)
-//				{
-//					Log.error("Error loading default skin file \"" + textureName + "\" from \"" + location + "\", congratulations you somehow managed to break the game", e);
-//					System.exit(-1);
-//					//e1.printStackTrace();
-//				}
-//			}
-//
-//			skin.getTextureList().put(textureName, tempTexture);
-//		}
+
+		for(String textureName: CCSSkin.LIST_OF_TEXTURES)
+		{
+
+			try
+			{
+				//TODO: create static final string for the tag for SkinLoader
+				Gdx.app.debug("SkinLoader", "Adding skin file \"" + textureName + "\" from \"" + location + "\" to queue");
+
+			} catch (Exception e)
+			{
+				Gdx.app.log("SkinLoader", "WARNING: Cannot add skin file \"" + textureName + "\" from \"" + location + "\" to queue, falling back onto default files", e);
+				e.printStackTrace();
+
+				try
+				{
+					Gdx.app.debug("SkinLoader", "Adding skin file \"" + textureName + "\" from \"" + DEFAULT_SKIN_PATH + "\" to queue");
+
+				} catch (Exception e1)
+				{
+					Gdx.app.error("SkinLoader", "Error loading default skin file \"" + textureName + "\" from \"" + location + "\", did you move the skin files?", e);
+					System.exit(-1);
+				}
+			}
+
+		}
 	}
 
 	private static void loadSkinSounds(String location, CCSSkin CCSSkin)

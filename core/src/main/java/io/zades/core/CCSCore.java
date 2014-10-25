@@ -1,5 +1,6 @@
 package io.zades.core;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,6 +16,7 @@ public class CCSCore implements ApplicationListener
 	public CCSSkinManager ccsSkinManager;
 	public BeatmapManager beatmapManager;
 	public GameStateManager gameStateManager;
+	public AssetManager assetManager;
 
 	Texture texture;
 	SpriteBatch batch;
@@ -23,6 +25,11 @@ public class CCSCore implements ApplicationListener
 	@Override
 	public void create ()
 	{
+		this.ccsSkinManager = new CCSSkinManager(this);
+		this.beatmapManager = new BeatmapManager();
+		this.gameStateManager = new GameStateManager(this);
+		this.assetManager = new AssetManager();
+
 		texture = new Texture(Gdx.files.internal("libgdx-logo.png"));
 		batch = new SpriteBatch();
 	}
@@ -35,13 +42,14 @@ public class CCSCore implements ApplicationListener
 	@Override
 	public void render ()
 	{
+		this.gameStateManager.getCurrentState().render(Gdx.graphics.getDeltaTime());
 
-		elapsed += Gdx.graphics.getDeltaTime();
-		Gdx.gl.glClearColor(0, 0, 0, 0);
-		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(texture, 100+100*(float)Math.cos(elapsed), 100+25*(float)Math.sin(elapsed));
-		batch.end();
+//		elapsed += Gdx.graphics.getDeltaTime();
+//		Gdx.gl.glClearColor(0, 0, 0, 0);
+//		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
+//		batch.begin();
+//		batch.draw(texture, 100+100*(float)Math.cos(elapsed), 100+25*(float)Math.sin(elapsed));
+//		batch.end();
 	}
 
 	@Override
