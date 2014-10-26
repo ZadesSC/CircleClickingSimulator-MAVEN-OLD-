@@ -12,7 +12,7 @@ import io.zades.core.managers.GameStateManager;
 public abstract class AbstractGameState implements Screen
 {
 	private GameStateManager.GAME_STATE gameState;
-	private CCSCore game;
+	protected CCSCore game;
 
 	public AbstractGameState(GameStateManager.GAME_STATE gameState, CCSCore game)
 	{

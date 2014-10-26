@@ -15,13 +15,13 @@ public class CCSSkinManager
 	private CCSSkin currentCCSSkin;
 	private CCSSkin defaultCCSSkin;
 
-	//The list of skins, the default skin should also be included
-	private HashMap<String, CCSSkin> listOfSkins;
+	//The list of skins by their directory, which should be unique
+	private HashMap<String, CCSSkin> listOfSkinsByDirectory;
 
 	public CCSSkinManager(CCSCore game)
 	{
 		this.game = game;
-		this.setListOfSkins(new HashMap<String, CCSSkin>());
+		this.setListOfSkinsByDirectory(new HashMap<String, CCSSkin>());
 
 	}
 
@@ -33,12 +33,13 @@ public class CCSSkinManager
 
 	private CCSSkin initDefaultSkin()
 	{
-		CCSSkin CCSSkinToInit = SkinLoader.loadDefaultSkin();
+		CCSSkin defaultSkin = new CCSSkin(CCSSkin.DEFAULT_SKIN_PATH);
+		SkinLoader.loadSkin(defaultSkin, this.game);
 
-		this.setDefaultCCSSkin(CCSSkinToInit);
-		this.getListOfSkins().put("Default Skin", CCSSkinToInit);
+		this.setDefaultCCSSkin(defaultSkin);
+		this.getListOfSkinsByDirectory().put(defaultSkin.getLocation(), defaultSkin);
 
-		return CCSSkinToInit;
+		return defaultSkin;
 	}
 
 	private CCSSkin initSkin()
@@ -68,13 +69,13 @@ public class CCSSkinManager
 		this.defaultCCSSkin = defaultCCSSkin;
 	}
 
-	public HashMap<String, CCSSkin> getListOfSkins()
+	public HashMap<String, CCSSkin> getListOfSkinsByDirectory()
 	{
-		return listOfSkins;
+		return listOfSkinsByDirectory;
 	}
 
-	public void setListOfSkins(HashMap<String, CCSSkin> listOfSkins)
+	public void setListOfSkinsByDirectory(HashMap<String, CCSSkin> listOfSkinsByDirectory)
 	{
-		this.listOfSkins = listOfSkins;
+		this.listOfSkinsByDirectory = listOfSkinsByDirectory;
 	}
 }

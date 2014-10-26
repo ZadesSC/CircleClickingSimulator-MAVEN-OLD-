@@ -1,5 +1,6 @@
 package io.zades.core;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
@@ -25,10 +26,15 @@ public class CCSCore implements ApplicationListener
 	@Override
 	public void create ()
 	{
+		//Cross platform application settings go here
+		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+
 		this.ccsSkinManager = new CCSSkinManager(this);
 		this.beatmapManager = new BeatmapManager();
 		this.gameStateManager = new GameStateManager(this);
 		this.assetManager = new AssetManager();
+
+		this.gameStateManager.initStates();
 
 		texture = new Texture(Gdx.files.internal("libgdx-logo.png"));
 		batch = new SpriteBatch();

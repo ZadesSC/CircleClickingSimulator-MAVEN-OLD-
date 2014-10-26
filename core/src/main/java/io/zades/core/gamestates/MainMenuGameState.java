@@ -1,36 +1,23 @@
 package io.zades.core.gamestates;
 
-import com.badlogic.gdx.Gdx;
 import io.zades.core.CCSCore;
 import io.zades.core.managers.GameStateManager;
 
 /**
- * Created by Darren on 10/22/2014.
+ * Created by Darren on 10/26/2014.
  */
-public class PreloadGameState extends AbstractGameState
+public class MainMenuGameState extends AbstractGameState
 {
-	public PreloadGameState(CCSCore game)
-	{
-		super(GameStateManager.GAME_STATE.PRELOAD, game);
 
-		//Begin loading stuff
-		game.ccsSkinManager.initAllSkins();
+	public MainMenuGameState(CCSCore game)
+	{
+		super(GameStateManager.GAME_STATE.MAIN_MENU, game);
 	}
 
 	@Override
 	public void render(float delta)
 	{
 		super.render(delta);
-
-		if(this.game.assetManager.update())
-		{
-			//loading complete, moving on
-			Gdx.app.debug(PreloadGameState.class.toString(), "Loading complete, moving on to main menu");
-			this.game.gameStateManager.setCurrentState(GameStateManager.GAME_STATE.MAIN_MENU);
-		}
-
-		//loading debug
-		Gdx.app.debug(PreloadGameState.class.toString(), "Current loading progress: " + this.game.assetManager.getProgress());
 	}
 
 	/**
