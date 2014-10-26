@@ -6,15 +6,13 @@ import io.zades.core.managers.GameStateManager;
 /**
  * Created by Darren on 10/26/2014.
  */
-public class MainMenuGameState extends AbstractGameState
+public class PlayGameState extends AbstractGameState
 {
 
-	public MainMenuGameState(CCSCore game)
+	public PlayGameState(CCSCore game)
 	{
-		super(GameStateManager.GAME_STATE.MAIN_MENU, game);
+		super(GameStateManager.GAME_STATE.PLAY_GAME, game);
 
-		//TODO: change, it currently jumps to play game state
-		this.game.gameStateManager.setCurrentState(GameStateManager.GAME_STATE.PLAY_GAME);
 	}
 
 	@Override

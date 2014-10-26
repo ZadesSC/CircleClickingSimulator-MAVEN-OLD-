@@ -1,9 +1,7 @@
 package io.zades.core.managers;
 
 import io.zades.core.CCSCore;
-import io.zades.core.gamestates.AbstractGameState;
-import io.zades.core.gamestates.MainMenuGameState;
-import io.zades.core.gamestates.PreloadGameState;
+import io.zades.core.gamestates.*;
 
 import java.util.HashMap;
 
@@ -38,10 +36,12 @@ public class GameStateManager
 
 	public void initStates()
 	{
-		PreloadGameState 	preloadState 	= new PreloadGameState(game);
-		MainMenuGameState 	mainMenuState 	= new MainMenuGameState(game);
-//		SongSelectState songSelectState = new SongSelectState();
-//		PlayGameState 	playGameState 	= new PlayGameState();
+		//TODO: maybe use function pointers for this part (anon classes)
+
+		PreloadGameState 		preloadState 		= new PreloadGameState(game);
+		MainMenuGameState 		mainMenuState 		= new MainMenuGameState(game);
+		SongSelectionGameState 	songSelectionState 	= new SongSelectionGameState(game);
+		PlayGameState	 		playGameState 		= new PlayGameState(game);
 //		OptionsState 	optionsState 	= new OptionsState();
 //		PauseState 		pauseState 		= new PauseState();
 //		GameOverState 	gameOverState 	= new GameOverState();
@@ -49,6 +49,8 @@ public class GameStateManager
 
 		this.getGameStateList().put(GAME_STATE.PRELOAD, preloadState);
 		this.getGameStateList().put(GAME_STATE.MAIN_MENU, mainMenuState);
+		this.getGameStateList().put(GAME_STATE.SONG_SELECTION, songSelectionState);
+		this.getGameStateList().put(GAME_STATE.PLAY_GAME, playGameState);
 
 		this.setCurrentState(GAME_STATE.PRELOAD);
 	}
