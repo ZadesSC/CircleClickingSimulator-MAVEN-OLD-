@@ -30,13 +30,13 @@ public class CCSCore implements ApplicationListener
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
 		this.ccsSkinManager = new CCSSkinManager(this);
-		this.beatmapManager = new BeatmapManager();
+		this.beatmapManager = new BeatmapManager(this);
 		this.gameStateManager = new GameStateManager(this);
 		this.assetManager = new AssetManager();
 
 		this.gameStateManager.initStates();
 
-		texture = new Texture(Gdx.files.internal("libgdx-logo.png"));
+		texture = new Texture(Gdx.files.internal("data/libgdx-logo.png"));
 		batch = new SpriteBatch();
 	}
 

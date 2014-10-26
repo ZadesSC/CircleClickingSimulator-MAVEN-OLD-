@@ -10,8 +10,6 @@ import java.util.HashMap;
  */
 public class CCSSkin
 {
-	public static final String DEFAULT_SKIN_PATH = "assets/default-skin/";
-
 	//TODO: add all other data file pathes, currently it only has the most basic items
 	public static final String SKIN_INIT_FILE			= "skin.ini";
 

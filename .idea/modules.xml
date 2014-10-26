@@ -3,10 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CircleClickingSimulator.iml" filepath="$PROJECT_DIR$/CircleClickingSimulator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/ccs-android.iml" filepath="$PROJECT_DIR$/android/ccs-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/ccs-core.iml" filepath="$PROJECT_DIR$/core/ccs-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/desktop/ccs-desktop.iml" filepath="$PROJECT_DIR$/desktop/ccs-desktop.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ios/ccs-ios.iml" filepath="$PROJECT_DIR$/ios/ccs-ios.iml" />
     </modules>
   </component>
 </project>

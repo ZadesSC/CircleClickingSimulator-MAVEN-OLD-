@@ -1,7 +1,7 @@
 package io.zades.core.managers;
 
 import io.zades.core.CCSCore;
-import io.zades.core.loaders.SkinLoader;
+import io.zades.core.loaders.CCSSkinLoader;
 import io.zades.core.objects.CCSSkin;
 
 import java.util.HashMap;
@@ -11,6 +11,9 @@ import java.util.HashMap;
  */
 public class CCSSkinManager
 {
+	public static final String DEFAULT_SKIN_PATH = "data/default-skin/";
+	public static final String SKIN_PATH = "Skins/";
+
 	private CCSCore game;
 	private CCSSkin currentCCSSkin;
 	private CCSSkin defaultCCSSkin;
@@ -33,8 +36,8 @@ public class CCSSkinManager
 
 	private CCSSkin initDefaultSkin()
 	{
-		CCSSkin defaultSkin = new CCSSkin(CCSSkin.DEFAULT_SKIN_PATH);
-		SkinLoader.loadSkin(defaultSkin, this.game);
+		CCSSkin defaultSkin = new CCSSkin(DEFAULT_SKIN_PATH);
+		CCSSkinLoader.loadSkin(defaultSkin, this.game);
 
 		this.setDefaultCCSSkin(defaultSkin);
 		this.getListOfSkinsByDirectory().put(defaultSkin.getLocation(), defaultSkin);

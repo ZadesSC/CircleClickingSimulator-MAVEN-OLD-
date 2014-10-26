@@ -32,13 +32,14 @@
         <sourceTestOutputDir name="bin\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="ccs-ios" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ccs-android" target="1.6" />
       <module name="ccs-core" target="1.6" />
       <module name="ccs-desktop" target="1.6" />
       <module name="ccs-html" target="1.6" />
+      <module name="ccs-ios" target="1.6" />
       <module name="CircleClickimgSimulator" target="1.6" />
       <module name="CircleClickingSimulator" target="1.6" />
     </bytecodeTargetLevel>

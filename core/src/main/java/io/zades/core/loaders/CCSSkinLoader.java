@@ -4,14 +4,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import io.zades.core.CCSCore;
+import io.zades.core.managers.CCSSkinManager;
 import io.zades.core.objects.CCSSkin;
 /**
  * This loader that loads skin files.
  * Created by Darren on 10/20/2014.
  */
-public final class SkinLoader
+public final class CCSSkinLoader
 {
-	private SkinLoader()
+	private CCSSkinLoader()
 	{
 	}
 
@@ -23,7 +24,7 @@ public final class SkinLoader
 	 */
 	public static CCSSkin loadDefaultSkin(CCSSkin skin, CCSCore game)
 	{
-		SkinLoader.loadSkinTextures(skin, game.assetManager);
+		CCSSkinLoader.loadSkinTextures(skin, game.assetManager);
 		return skin;
 	}
 
@@ -38,10 +39,10 @@ public final class SkinLoader
 	{
 		if(skin.getLocation() == null || skin.getLocation().equals(""))
 		{
-			Gdx.app.error(SkinLoader.class.toString(), "Attempting to load a skin without an associated path");
+			Gdx.app.error(CCSSkinLoader.class.toString(), "Attempting to load a skin without an associated path");
 			return null;
 		}
-		SkinLoader.loadSkinTextures(skin, game.assetManager);
+		CCSSkinLoader.loadSkinTextures(skin, game.assetManager);
 		return skin;
 	}
 
@@ -76,21 +77,21 @@ public final class SkinLoader
 		{
 			try
 			{
-				Gdx.app.debug(SkinLoader.class.toString(), "Adding skin file \"" + textureName + "\" from \"" + location + "\" to queue");
+				Gdx.app.debug(CCSSkinLoader.class.toString(), "Adding skin file \"" + textureName + "\" from \"" + location + "\" to queue");
 				am.load(location + textureName, Texture.class);
 
 			} catch (Exception e)
 			{
-				Gdx.app.error(SkinLoader.class.toString(), "WARNING: Cannot add skin file \"" + textureName + "\" from \"" + location + "\" to queue, falling back onto default files", e);
+				Gdx.app.error(CCSSkinLoader.class.toString(), "WARNING: Cannot add skin file \"" + textureName + "\" from \"" + location + "\" to queue, falling back onto default files", e);
 				//e.printStackTrace();
 
 				try
 				{
-					Gdx.app.debug(SkinLoader.class.toString(), "Adding skin file \"" + textureName + "\" from \"" + CCSSkin.DEFAULT_SKIN_PATH + "\" to queue");
-					am.load(CCSSkin.DEFAULT_SKIN_PATH + textureName, Texture.class);
+					Gdx.app.debug(CCSSkinLoader.class.toString(), "Adding skin file \"" + textureName + "\" from \"" + CCSSkinManager.DEFAULT_SKIN_PATH + "\" to queue");
+					am.load(CCSSkinManager.DEFAULT_SKIN_PATH + textureName, Texture.class);
 				} catch (Exception e1)
 				{
-					Gdx.app.error(SkinLoader.class.toString(), "Error loading default skin file \"" + textureName + "\" from \"" + location + "\", did you move the skin files or changed the name?", e);
+					Gdx.app.error(CCSSkinLoader.class.toString(), "Error loading default skin file \"" + textureName + "\" from \"" + location + "\", did you move the skin files or changed the name?", e);
 					System.exit(-1);
 				}
 			}
