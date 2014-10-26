@@ -45,6 +45,7 @@ public class BeatmapManager
 		{
 			if(file.isDirectory())
 			{
+				//TODO: loading the files needs to be done via asset manager
 				Gdx.app.debug(BeatmapManager.class.toString(), "Folder: " + file.toString());
 			}
 		}
