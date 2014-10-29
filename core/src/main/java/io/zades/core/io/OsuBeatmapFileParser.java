@@ -3,7 +3,7 @@ package io.zades.core.io;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import io.zades.core.CCSCore;
-import io.zades.core.objects.Beatmap;
+import io.zades.core.objects.beatmaps.Beatmap;
 import io.zades.core.objects.Coords;
 import io.zades.core.objects.HitObject;
 
