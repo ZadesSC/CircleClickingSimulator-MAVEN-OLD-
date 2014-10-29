@@ -2,9 +2,12 @@ package io.zades.core.managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.Json;
 import io.zades.core.CCSCore;
+import io.zades.core.io.OsuBeatmapFileParser;
 import io.zades.core.objects.Beatmap;
 
+import java.io.File;
 import java.util.HashMap;
 
 /**
@@ -16,12 +19,12 @@ public class BeatmapManager
 
 	private CCSCore game;
 
-	private HashMap<String, Beatmap> listOfBeatmapsByDirectory;
+	private HashMap<FileHandle, Beatmap> listOfBeatmapsByDirectory;
 
 	public BeatmapManager(CCSCore game)
 	{
 		this.game = game;
-		this.listOfBeatmapsByDirectory = new HashMap<String, Beatmap>();
+		this.listOfBeatmapsByDirectory = new HashMap<FileHandle, Beatmap>();
 
 	}
 
@@ -47,6 +50,22 @@ public class BeatmapManager
 			{
 				//TODO: loading the files needs to be done via asset manager
 				Gdx.app.debug(BeatmapManager.class.toString(), "Folder: " + file.toString());
+
+				//TODO: move to loader
+				FileHandle[] osuFiles = file.list(".osu");
+				for(FileHandle osuFile: osuFiles)
+				{
+					Gdx.app.debug(BeatmapManager.class.toString(), "File: " + osuFile.toString());
+
+					Beatmap beatmap = new Beatmap();
+					beatmap = OsuBeatmapFileParser.parseFile(beatmap, osuFile, this.game);
+					this.listOfBeatmapsByDirectory.put(osuFile, beatmap);
+
+					Gdx.app.debug(BeatmapManager.class.toString(), new Json().prettyPrint(beatmap));
+
+				}
+				//this.listOfBeatmapsByDirectory.put(file,)
+
 			}
 		}
 	}

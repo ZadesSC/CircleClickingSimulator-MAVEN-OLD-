@@ -81,11 +81,6 @@ public class HitObject
 		return coords;
 	}
 
-	public void addCoords(Coords coord)
-	{
-		this.getCoords().add(coord);
-	}
-
 	public void setCoords(List<Coords> coords)
 	{
 		this.coords = coords;

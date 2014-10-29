@@ -18,6 +18,7 @@ public class PreloadGameState extends AbstractGameState
 		super(GameStateManager.GAME_STATE.PRELOAD, game);
 
 		//Begin loading and starting stuff
+		//This needs to be async
 		game.ccsSkinManager.initAllSkins();
 		game.beatmapManager.initAllBeatmaps();
 

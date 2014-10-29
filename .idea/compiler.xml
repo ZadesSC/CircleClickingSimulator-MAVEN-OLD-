@@ -36,12 +36,12 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ccs-android" target="1.6" />
-      <module name="ccs-core" target="1.6" />
-      <module name="ccs-desktop" target="1.6" />
+      <module name="ccs-core" target="1.8" />
+      <module name="ccs-desktop" target="1.8" />
       <module name="ccs-html" target="1.6" />
       <module name="ccs-ios" target="1.6" />
       <module name="CircleClickimgSimulator" target="1.6" />
-      <module name="CircleClickingSimulator" target="1.6" />
+      <module name="CircleClickingSimulator" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
