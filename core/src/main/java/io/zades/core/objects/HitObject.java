@@ -1,5 +1,6 @@
 package io.zades.core.objects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,31 +8,70 @@ import java.util.List;
  */
 public class HitObject
 {
-	public enum HIT_OBJECT_TYPE
+	public static final int CIRCLE_HIT_OBJECT = 1;
+	public static final int SLIDER_HIT_OBJECT = 2;
+	public static final int NEW_COMBO = 4;
+	public static final int SPINNER_HIT_OBJECT = 8; //?
+
+	public static final String LINEAR_SLIDER = "L";
+	public static final String BEZIER_SLIDER = "B";
+	public static final String PASS_THROUGH_SLIDER = "P";
+	public static final String CATMULL_SLIDER = "C";
+
+	public static final int NORMAL_HIT_SOUND = 0;
+	public static final int WHISTLE_HIT_SOUND = 2;
+	public static final int FINISH_HIT_SOUND = 3;
+	public static final int CLAP_HIT_SOUND = 4;
+
+	public static final int[] LIST_OF_HIT_OBJECTS =
 	{
-		HIT_CIRCLE,
-		HIT_SLIDER,
-		HIT_SPINNER
+			CIRCLE_HIT_OBJECT,
+			SLIDER_HIT_OBJECT,
+			SPINNER_HIT_OBJECT,
 	};
 
-	private HIT_OBJECT_TYPE hitObjectType;
+	public static final String[] LIST_OF_SLIDER_TYPES =
+	{
+			LINEAR_SLIDER,
+			BEZIER_SLIDER,
+			PASS_THROUGH_SLIDER,
+			CATMULL_SLIDER
+	};
+
+	public static final int[] LIST_OF_HIT_SOUNDS =
+	{
+			NORMAL_HIT_SOUND,
+			WHISTLE_HIT_SOUND,
+			FINISH_HIT_SOUND,
+			CLAP_HIT_SOUND
+	};
+
+	private int hitObjectType;
+	private String sliderType;
+	private int hitSoundTyoe;
 
 	private List<Coords> coords;
-	private int time;
+	private int offsetTime;
+	private boolean isNewCombo;
 
-	public HitObject(List<Coords> coords, int time, HIT_OBJECT_TYPE type)
+	public HitObject()
+	{
+		coords = new ArrayList<Coords>();
+	}
+
+	public HitObject(List<Coords> coords, int startTime, int type)
 	{
 		this.coords = coords;
-		this.time = time;
+		this.offsetTime = startTime;
 		this.hitObjectType = type;
 	}
 
-	public HIT_OBJECT_TYPE getHitObjectType()
+	public int getHitObjectType()
 	{
 		return hitObjectType;
 	}
 
-	public void setHitObjectType(HIT_OBJECT_TYPE hitObjectType)
+	public void setHitObjectType(int hitObjectType)
 	{
 		this.hitObjectType = hitObjectType;
 	}
@@ -41,18 +81,53 @@ public class HitObject
 		return coords;
 	}
 
+	public void addCoords(Coords coord)
+	{
+		this.getCoords().add(coord);
+	}
+
 	public void setCoords(List<Coords> coords)
 	{
 		this.coords = coords;
 	}
 
-	public int getTime()
+	public int getOffsetTime()
 	{
-		return time;
+		return offsetTime;
 	}
 
-	public void setTime(int time)
+	public void setOffsetTime(int offsetTime)
 	{
-		this.time = time;
+		this.offsetTime = offsetTime;
+	}
+
+	public String getSliderType()
+	{
+		return sliderType;
+	}
+
+	public void setSliderType(String sliderType)
+	{
+		this.sliderType = sliderType;
+	}
+
+	public int getHitSoundTyoe()
+	{
+		return hitSoundTyoe;
+	}
+
+	public void setHitSoundType(int hitSoundTyoe)
+	{
+		this.hitSoundTyoe = hitSoundTyoe;
+	}
+
+	public boolean isNewCombo()
+	{
+		return isNewCombo;
+	}
+
+	public void setNewCombo(boolean isNewCombo)
+	{
+		this.isNewCombo = isNewCombo;
 	}
 }

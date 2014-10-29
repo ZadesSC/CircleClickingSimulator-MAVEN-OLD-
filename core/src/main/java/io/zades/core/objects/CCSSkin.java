@@ -132,7 +132,7 @@ public class CCSSkin
 
 	//Combined list for easy processing
 	public static final String[] LIST_OF_TEXTURES =
-		{
+	{
 				APPROACH_CIRCLE,
 				HIT_CIRCLE,
 				HIT_CIRCLE_OVERLAY,
@@ -212,9 +212,9 @@ public class CCSSkin
 				REVERSE_ARROW,
 				STAR,
 				STAR_2
-		};
+	};
 	public static final String[] LIST_OF_SOUNDS =
-		{
+	{
 				READYS,
 				COUNT_1_S,
 				COUNT_2_S,
@@ -234,7 +234,7 @@ public class CCSSkin
 				SOFT_SLIDER_SLIDE,
 				SOFT_SLIDER_TICK,
 				SOFT_SLIDER_WHISTLE
-		};
+	};
 
 	//public variables
 	private String skinName;
