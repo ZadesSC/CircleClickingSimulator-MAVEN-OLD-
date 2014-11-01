@@ -1,6 +1,7 @@
-package io.zades.core.objects;
+package io.zades.core.objects.beatmaps;
 
-import java.util.ArrayDeque;
+import io.zades.core.objects.HitObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,6 +11,10 @@ import java.util.HashMap;
 public class Beatmap
 {
 	private int osuFileVersion;
+	private SongData songData;
+	private BeatmapData beatmapData;
+	private EditorData editorData;
+	private DifficultyData difficultyData;
 
 	private HashMap<String, String> kvPairs;
 	private ArrayList<HitObject> hitObjects;
@@ -17,8 +22,14 @@ public class Beatmap
 	public Beatmap()
 	{
 		this.osuFileVersion = -1;
-		this.kvPairs = new HashMap<String, String>();
-		this.hitObjects = new ArrayList<HitObject>();
+
+		this.songData = new SongData();
+		this.beatmapData = new BeatmapData();
+		this.editorData = new EditorData();
+		this.difficultyData = new DifficultyData();
+
+		this.hitObjects = new ArrayList<>();
+		this.kvPairs = new HashMap<>();
 	}
 
 	public int getOsuFileVersion()
@@ -49,5 +60,15 @@ public class Beatmap
 	public void setHitObjects(ArrayList<HitObject> hitObjects)
 	{
 		this.hitObjects = hitObjects;
+	}
+
+	public SongData getSongData()
+	{
+		return songData;
+	}
+
+	public void setSongData(SongData songData)
+	{
+		this.songData = songData;
 	}
 }

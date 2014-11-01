@@ -92,6 +92,14 @@ public final class OsuBeatmapFileParser
 				case HIT_OBJECTS_SECTION:
 					objectLines.add(line);
 					break;
+				case GENERAL_SECTION:
+					break;
+				case METADATA_SECTION:
+					break;
+				case DIFFICULTY_SECTION:
+					break;
+				case COLORS_SECTIONS:
+					break;
 				default:
 					kvLines.add(line);
 					break;

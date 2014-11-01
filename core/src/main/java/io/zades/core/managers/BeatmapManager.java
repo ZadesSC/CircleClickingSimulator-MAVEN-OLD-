@@ -2,12 +2,10 @@ package io.zades.core.managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.utils.Json;
 import io.zades.core.CCSCore;
 import io.zades.core.io.OsuBeatmapFileParser;
-import io.zades.core.objects.Beatmap;
+import io.zades.core.objects.beatmaps.Beatmap;
 
-import java.io.File;
 import java.util.HashMap;
 
 /**
@@ -61,11 +59,9 @@ public class BeatmapManager
 					beatmap = OsuBeatmapFileParser.parseFile(beatmap, osuFile, this.game);
 					this.listOfBeatmapsByDirectory.put(osuFile, beatmap);
 
-					Gdx.app.debug(BeatmapManager.class.toString(), new Json().prettyPrint(beatmap));
+					//Gdx.app.debug(BeatmapManager.class.toString(), new Json().prettyPrint(beatmap));
 
 				}
-				//this.listOfBeatmapsByDirectory.put(file,)
-
 			}
 		}
 	}

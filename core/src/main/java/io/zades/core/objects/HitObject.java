@@ -48,7 +48,7 @@ public class HitObject
 
 	private int hitObjectType;
 	private String sliderType;
-	private int hitSoundTyoe;
+	private int hitSoundType;
 
 	private List<Coords> coords;
 	private int offsetTime;
@@ -106,14 +106,14 @@ public class HitObject
 		this.sliderType = sliderType;
 	}
 
-	public int getHitSoundTyoe()
+	public int getHitSoundType()
 	{
-		return hitSoundTyoe;
+		return hitSoundType;
 	}
 
 	public void setHitSoundType(int hitSoundTyoe)
 	{
-		this.hitSoundTyoe = hitSoundTyoe;
+		this.hitSoundType = hitSoundTyoe;
 	}
 
 	public boolean isNewCombo()
