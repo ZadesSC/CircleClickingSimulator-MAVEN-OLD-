@@ -5,4 +5,5 @@ package io.zades.core.loaders;
  */
 public class BeatmapLoader
 {
+
 }

@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  * TODO: refactor is out of static
  * Created by Darren on 10/26/2014.
  */
-public final class OsuBeatmapFileParser
+public class OsuBeatmapFileParser
 {
 	public static final String OSU_VERSION_PATTERN		= "\\Aosu file format v\\(d+\\)\\z";
 	public static final String SECTION_PATTERN			= "\\A\\[[a-zA-z0-9]+\\]\\z";
@@ -35,20 +35,34 @@ public final class OsuBeatmapFileParser
 	public static final String COLORS_SECTIONS 			= "[Colors]";
 	public static final String HIT_OBJECTS_SECTION 		= "[HitObjects]";
 
-	public static Beatmap parseFile(Beatmap beatmap, FileHandle fileh, CCSCore game)
+	private CCSCore game;
+
+	private List<String> objectLines;
+	private List<String> timingLines ;
+	private List<String> eventLines;
+	private List<String> kvLines;
+
+	private String currentSection;
+
+	public OsuBeatmapFileParser(CCSCore game)
+	{
+		this.game = game;
+
+		this.objectLines = new ArrayList<>();
+		this.timingLines = new ArrayList<>();
+		this.eventLines = new ArrayList<>();
+		this.kvLines = new ArrayList<>();
+
+		this.currentSection = "";
+	}
+
+	public Beatmap parseFile(Beatmap beatmap, FileHandle fileh)
 	{
 		//sanity checks
 		if(beatmap == null)
 		{
 			beatmap = new Beatmap();
 		}
-
-		//stuff
-		String currentSection = "";
-		List<String> objectLines = new ArrayList<String>();
-		List<String> timingLines = new ArrayList<String>();
-		List<String> eventLines = new ArrayList<String>();
-		List<String> kvLines = new ArrayList<String>();
 
 		String[] readLines = fileh.readString().split("\n");
 
@@ -106,13 +120,13 @@ public final class OsuBeatmapFileParser
 			}
 		}
 
-		parseKVPairs(beatmap, kvLines);
-		parseHitObjects(beatmap, objectLines);
+		this.parseKVPairs(beatmap, kvLines);
+		this.parseHitObjects(beatmap, objectLines);
 
 		return beatmap;
 	}
 
-	private static void parseKVPairs(Beatmap beatmap, List<String> lines)
+	private void parseKVPairs(Beatmap beatmap, List<String> lines)
 	{
 		Pattern pattern = Pattern.compile(KV_PATTERN);
 
@@ -137,18 +151,18 @@ public final class OsuBeatmapFileParser
 		}
 	}
 
-	private static void parseHitObjects(Beatmap beatmap, List<String> lines)
+	private void parseHitObjects(Beatmap beatmap, List<String> lines)
 	{
 		for(String line: lines)
 		{
 			line = line.trim();
 
-			HitObject hitObject = parseHitObject(line);
+			HitObject hitObject = this.parseHitObject(line);
 			beatmap.getHitObjects().add(hitObject);
 		}
 	}
 
-	private static HitObject parseHitObject(String line)
+	private HitObject parseHitObject(String line)
 	{
 		//TODO: finish this shit
 		//x, y, offset, type, hitsound, additions
@@ -190,6 +204,8 @@ public final class OsuBeatmapFileParser
 		else if((type & HitObject.SLIDER_HIT_OBJECT) ==  HitObject.SLIDER_HIT_OBJECT)
 		{
 			obj.setHitObjectType(HitObject.SLIDER_HIT_OBJECT);
+			//TODO: parse extra points for sliders
+			String[] sliderCoords = hitObjectParts[5].split("|");
 			//TODO: parse additions
 			//TODO: parse edge crap
 		}
