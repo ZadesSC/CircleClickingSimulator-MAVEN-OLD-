@@ -10,6 +10,9 @@ import java.util.HashMap;
  */
 public class Beatmap
 {
+	private String directoryLocation;
+	private String fileLocation;
+
 	private int osuFileVersion;
 	private SongData songData;
 	private BeatmapData beatmapData;
@@ -94,5 +97,21 @@ public class Beatmap
 
 	public void setDifficultyData(DifficultyData difficultyData) {
 		this.difficultyData = difficultyData;
+	}
+
+	public String getDirectoryLocation() {
+		return directoryLocation;
+	}
+
+	public void setDirectoryLocation(String directoryLocation) {
+		this.directoryLocation = directoryLocation;
+	}
+
+	public String getFileLocation() {
+		return fileLocation;
+	}
+
+	public void setFileLocation(String fileLocation) {
+		this.fileLocation = fileLocation;
 	}
 }

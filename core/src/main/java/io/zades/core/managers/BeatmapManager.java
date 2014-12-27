@@ -58,6 +58,8 @@ public class BeatmapManager
 					Beatmap beatmap = new Beatmap();
 					OsuBeatmapFileParser parser = new OsuBeatmapFileParser(this.game);
 					beatmap = parser.parseFile(beatmap, osuFile);
+					beatmap.setDirectoryLocation(file.toString());
+					beatmap.setFileLocation(osuFile.toString());
 					this.getListOfBeatmapsByDirectory().put(osuFile, beatmap);
 
 					//Gdx.app.debug(BeatmapManager.class.toString(), new Json().prettyPrint(beatmap));

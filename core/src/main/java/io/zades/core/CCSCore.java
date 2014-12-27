@@ -2,6 +2,7 @@ package io.zades.core;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -23,6 +24,8 @@ public class CCSCore implements ApplicationListener
 	SpriteBatch batch;
 	float elapsed;
 
+	FPSLogger fpsLogger;
+
 	@Override
 	public void create ()
 	{
@@ -38,6 +41,8 @@ public class CCSCore implements ApplicationListener
 
 		texture = new Texture(Gdx.files.internal("data/libgdx-logo.png"));
 		batch = new SpriteBatch();
+
+		this.fpsLogger = new FPSLogger();
 	}
 
 	@Override
@@ -56,6 +61,7 @@ public class CCSCore implements ApplicationListener
 //		batch.begin();
 //		batch.draw(texture, 100+100*(float)Math.cos(elapsed), 100+25*(float)Math.sin(elapsed));
 //		batch.end();
+		this.fpsLogger.log();
 	}
 
 	@Override

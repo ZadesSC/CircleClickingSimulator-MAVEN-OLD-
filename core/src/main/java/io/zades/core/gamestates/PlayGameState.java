@@ -2,6 +2,7 @@ package io.zades.core.gamestates;
 
 import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import io.zades.core.CCSCore;
 import io.zades.core.graphics.BeatmapGraphicsManager;
@@ -14,6 +15,8 @@ import io.zades.core.objects.beatmaps.Beatmap;
 public class PlayGameState extends AbstractGameState
 {
 	private BeatmapGraphicsManager beatmapGraphicsManager;
+	private Beatmap currentBeatmap;
+	private Music currentSong;
 
 	private long time = 0;
 
@@ -25,7 +28,15 @@ public class PlayGameState extends AbstractGameState
 	public void enterState()
 	{
 		//currently just a random beatmap
-		this.beatmapGraphicsManager = new BeatmapGraphicsManager(this.game, (Beatmap)this.game.beatmapManager.getListOfBeatmapsByDirectory().values().toArray()[0]);
+		this.currentBeatmap = (Beatmap)this.game.beatmapManager.getListOfBeatmapsByDirectory().values().toArray()[0];
+		this.beatmapGraphicsManager = new BeatmapGraphicsManager(this.game, this.currentBeatmap);
+
+		//music setup
+		//TODO: FIX LE HARDCODE
+		//this.currentSong = Gdx.audio.newMusic(Gdx.files.local(this.currentBeatmap.getDirectoryLocation() + this.currentBeatmap.getKvPairs().get("AudioFileName")));
+		this.currentSong = Gdx.audio.newMusic(Gdx.files.local(this.currentBeatmap.getDirectoryLocation() + "\\IGNITEup_1.mp3"));
+		this.currentSong.setVolume((float)0.1);
+
 		this.beatmapGraphicsManager.init();
 	}
 
@@ -33,9 +44,14 @@ public class PlayGameState extends AbstractGameState
 	public void render(float delta)
 	{
 		super.render(delta);
-		this.time += delta * 1000;
-		this.beatmapGraphicsManager.draw(this.time);
-		Gdx.app.debug(PlayGameState.class.toString(), "Elapsed Time: " + this.time);
+		if(!this.currentSong.isPlaying())
+		{
+			this.currentSong.play();
+		}
+		this.beatmapGraphicsManager.draw((long)(this.currentSong.getPosition() * 1000));
+		Gdx.app.debug(PlayGameState.class.toString(), "Elapsed Time: " + this.currentSong.getPosition() * 1000);
+		Gdx.app.debug(PlayGameState.class.toString(), "Delta Time: " + (delta * 1000));
+
 	}
 
 	/**

@@ -50,11 +50,12 @@ public class BeatmapGraphicsManager
 
     public void draw(long elapsedTime)
     {
-        long maxBeforeDrawTime = elapsedTime - DifficultyTable.odDefaultTable[this.beatmap.getDifficultyData().getOverallDifficulty()][2];
+        long maxBeforeDrawTime = elapsedTime - DifficultyTable.odDefaultTable[this.beatmap.getDifficultyData().getOverallDifficulty()][1];
         long maxAfterDrawTime = elapsedTime + DifficultyTable.arDefaultTable[this.beatmap.getDifficultyData().getApproachRate()];
 
         this.batch.begin();
 
+        //TODO: might be more effiecnt to iterate over the list of hitobjects
         for(long time = maxBeforeDrawTime; time <= maxAfterDrawTime; time++)
         {
             if(this.drawableHitObjects.containsKey(time))
@@ -82,9 +83,20 @@ public class BeatmapGraphicsManager
 
     private void drawHitCircleObject(long elapsedTime, HitObject hitObject)
     {
+        float hitObjectX = (float)hitObject.getCoords().get(0).getGdxX();
+        float hitObjectY = (float)hitObject.getCoords().get(0).getGdxY();
+
         //draw the appraoch circle
-        if(hitObject.getOffsetTime() > elapsedTime)
+        if(hitObject.getOffsetTime() >= elapsedTime)
         {
+            Texture approachCircle = this.game.assetManager.get(this.game.ccsSkinManager.getCurrentCCSSkin().getLocation() + CCSSkin.APPROACH_CIRCLE, Texture.class);
+
+            //The scale is the |currentTime - finalTime|/arTime * 3 + 1
+            float scaleRatio = (float)Math.abs(elapsedTime - hitObject.getOffsetTime())/(float)DifficultyTable.arDefaultTable[this.beatmap.getDifficultyData().getApproachRate()] * 3 + 1;
+            Gdx.app.debug(BeatmapGraphicsManager.class.toString(), "Curent Ratio for " + hitObject.getOffsetTime() + " is: " + scaleRatio);
+
+            this.batch.draw(approachCircle, hitObjectX - (approachCircle.getWidth() * scaleRatio)/2, hitObjectY - (approachCircle.getHeight() * scaleRatio)/2,
+                    approachCircle.getWidth() * scaleRatio, approachCircle.getHeight() * scaleRatio);
 
         }
 
@@ -92,7 +104,8 @@ public class BeatmapGraphicsManager
         //TODO: overlay circle?
         Texture hitCircle = this.game.assetManager.get(this.game.ccsSkinManager.getCurrentCCSSkin().getLocation() + CCSSkin.HIT_CIRCLE, Texture.class);
         Gdx.app.debug(BeatmapGraphicsManager.class.toString(), "Attempting to draw:" + hitObject.getOffsetTime() + " with (" + hitObject.getCoords().get(0).getX() + ", " + hitObject.getCoords().get(0).getY() + ")" +  " at: " + (float)hitObject.getCoords().get(0).getGdxX() + " " + (float)hitObject.getCoords().get(0).getGdxY() );
+        Gdx.app.debug(BeatmapGraphicsManager.class.toString(), "Elapsed Time " + elapsedTime);
 
-        this.batch.draw(hitCircle, (float)hitObject.getCoords().get(0).getGdxX(),(float)hitObject.getCoords().get(0).getGdxY());
+        this.batch.draw(hitCircle,  hitObjectX - hitCircle.getWidth()/2, hitObjectY - hitCircle.getHeight()/2);
     }
 }
