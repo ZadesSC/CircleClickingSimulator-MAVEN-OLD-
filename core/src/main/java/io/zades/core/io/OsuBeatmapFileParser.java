@@ -184,7 +184,7 @@ public class OsuBeatmapFileParser
 			return null;
 		}
 
-		Coords coords = new Coords(Double.parseDouble(hitObjectParts[0]), Double.parseDouble(hitObjectParts[1]));
+		Coords coords = new Coords(Double.parseDouble(hitObjectParts[0]), Double.parseDouble(hitObjectParts[1]), Coords.CoordType.GAME);
 		int offset = Integer.parseInt(hitObjectParts[2]);
 		int type = Integer.parseInt(hitObjectParts[3]);
 		int hitSound = Integer.parseInt(hitObjectParts[4]);

@@ -32,8 +32,9 @@ public class PreloadGameState extends AbstractGameState
 		if(this.game.assetManager.update())
 		{
 			//loading complete, moving on
-			Gdx.app.debug(PreloadGameState.class.toString(), "Loading complete, moving on to main menu");
-			this.game.gameStateManager.setCurrentState(GameStateManager.GAME_STATE.MAIN_MENU);
+			//short circuit to play game state
+			Gdx.app.debug(PreloadGameState.class.toString(), "Loading complete, moving on to play game state");
+			this.game.gameStateManager.setCurrentState(GameStateManager.GAME_STATE.PLAY_GAME);
 		}
 
 		//loading debug

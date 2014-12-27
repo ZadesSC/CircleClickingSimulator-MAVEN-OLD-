@@ -24,9 +24,9 @@ public class Beatmap
 		this.osuFileVersion = -1;
 
 		this.songData = new SongData();
-		this.beatmapData = new BeatmapData();
-		this.editorData = new EditorData();
-		this.difficultyData = new DifficultyData();
+		this.setBeatmapData(new BeatmapData());
+		this.setEditorData(new EditorData());
+		this.setDifficultyData(new DifficultyData());
 
 		this.hitObjects = new ArrayList<>();
 		this.kvPairs = new HashMap<>();
@@ -54,7 +54,7 @@ public class Beatmap
 
 	public ArrayList<HitObject> getHitObjects()
 	{
-		return hitObjects;
+		return this.hitObjects;
 	}
 
 	public void setHitObjects(ArrayList<HitObject> hitObjects)
@@ -70,5 +70,29 @@ public class Beatmap
 	public void setSongData(SongData songData)
 	{
 		this.songData = songData;
+	}
+
+	public BeatmapData getBeatmapData() {
+		return beatmapData;
+	}
+
+	public void setBeatmapData(BeatmapData beatmapData) {
+		this.beatmapData = beatmapData;
+	}
+
+	public EditorData getEditorData() {
+		return editorData;
+	}
+
+	public void setEditorData(EditorData editorData) {
+		this.editorData = editorData;
+	}
+
+	public DifficultyData getDifficultyData() {
+		return difficultyData;
+	}
+
+	public void setDifficultyData(DifficultyData difficultyData) {
+		this.difficultyData = difficultyData;
 	}
 }

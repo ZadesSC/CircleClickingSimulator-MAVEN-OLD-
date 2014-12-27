@@ -22,7 +22,7 @@ public class BeatmapManager
 	public BeatmapManager(CCSCore game)
 	{
 		this.game = game;
-		this.listOfBeatmapsByDirectory = new HashMap<FileHandle, Beatmap>();
+		this.setListOfBeatmapsByDirectory(new HashMap<FileHandle, Beatmap>());
 
 	}
 
@@ -58,7 +58,7 @@ public class BeatmapManager
 					Beatmap beatmap = new Beatmap();
 					OsuBeatmapFileParser parser = new OsuBeatmapFileParser(this.game);
 					beatmap = parser.parseFile(beatmap, osuFile);
-					this.listOfBeatmapsByDirectory.put(osuFile, beatmap);
+					this.getListOfBeatmapsByDirectory().put(osuFile, beatmap);
 
 					//Gdx.app.debug(BeatmapManager.class.toString(), new Json().prettyPrint(beatmap));
 
@@ -71,5 +71,13 @@ public class BeatmapManager
 	{
 		//TODO: change it so users can change the directory, which is going to be a pain in the ass
 		return Gdx.files.local(BEATMAP_PATH);
+	}
+
+	public HashMap<FileHandle, Beatmap> getListOfBeatmapsByDirectory() {
+		return listOfBeatmapsByDirectory;
+	}
+
+	public void setListOfBeatmapsByDirectory(HashMap<FileHandle, Beatmap> listOfBeatmapsByDirectory) {
+		this.listOfBeatmapsByDirectory = listOfBeatmapsByDirectory;
 	}
 }

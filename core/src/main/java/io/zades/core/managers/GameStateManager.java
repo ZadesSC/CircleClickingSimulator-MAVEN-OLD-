@@ -67,6 +67,7 @@ public class GameStateManager
 
 	public void setCurrentState(GAME_STATE currentState)
 	{
+		this.gameStateList.get(currentState).enterState();
 		this.currentState = currentState;
 	}
 }

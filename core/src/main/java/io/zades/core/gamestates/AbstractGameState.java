@@ -20,6 +20,18 @@ public abstract class AbstractGameState implements Screen
 		this.game = game;
 	}
 
+	//method called when entering state
+	public void enterState()
+	{
+
+	}
+
+	//method called when exiting this state
+	public void exitState()
+	{
+
+	}
+
 	@Override
 	public void render(float delta)
 	{

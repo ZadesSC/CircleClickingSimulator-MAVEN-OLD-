@@ -12,9 +12,6 @@ public class MainMenuGameState extends AbstractGameState
 	public MainMenuGameState(CCSCore game)
 	{
 		super(GameStateManager.GAME_STATE.MAIN_MENU, game);
-
-		//TODO: change, it currently jumps to play game state
-		this.game.gameStateManager.setCurrentState(GameStateManager.GAME_STATE.PLAY_GAME);
 	}
 
 	@Override

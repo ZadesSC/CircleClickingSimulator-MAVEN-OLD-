@@ -51,7 +51,7 @@ public class HitObject
 	private int hitSoundType;
 
 	private List<Coords> coords;
-	private int offsetTime;
+	private long offsetTime;
 	private boolean isNewCombo;
 
 	public HitObject()
@@ -59,7 +59,7 @@ public class HitObject
 		coords = new ArrayList<Coords>();
 	}
 
-	public HitObject(List<Coords> coords, int startTime, int type)
+	public HitObject(List<Coords> coords, long startTime, int type)
 	{
 		this.coords = coords;
 		this.offsetTime = startTime;
@@ -86,12 +86,12 @@ public class HitObject
 		this.coords = coords;
 	}
 
-	public int getOffsetTime()
+	public long getOffsetTime()
 	{
 		return offsetTime;
 	}
 
-	public void setOffsetTime(int offsetTime)
+	public void setOffsetTime(long offsetTime)
 	{
 		this.offsetTime = offsetTime;
 	}

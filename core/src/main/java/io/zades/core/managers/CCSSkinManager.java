@@ -32,6 +32,7 @@ public class CCSSkinManager
 	{
 		this.initDefaultSkin();
 		this.setCurrentCCSSkin(getDefaultCCSSkin());
+		//TODO: init other skins
 	}
 
 	private CCSSkin initDefaultSkin()
