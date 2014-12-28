@@ -38,6 +38,10 @@ public class BeatmapGraphicsManager
     //This method exists so that if a long ass song is played the loading doesn't stop the default thread
     public void init()
     {
+        //TODO: fix le hardcode
+        this.beatmap.getDifficultyData().setApproachRate(9);
+        this.beatmap.getDifficultyData().setOverallDifficulty(8);
+
         for(HitObject hitObject: this.beatmap.getHitObjects())
         {
             //TODO: look into why there isn't a 0th index
@@ -52,6 +56,9 @@ public class BeatmapGraphicsManager
     {
         long maxBeforeDrawTime = elapsedTime - DifficultyTable.odDefaultTable[this.beatmap.getDifficultyData().getOverallDifficulty()][1];
         long maxAfterDrawTime = elapsedTime + DifficultyTable.arDefaultTable[this.beatmap.getDifficultyData().getApproachRate()];
+
+        Gdx.app.debug(BeatmapGraphicsManager.class.toString(), "AR:" + this.beatmap.getDifficultyData().getApproachRate() + " at: " + DifficultyTable.arDefaultTable[this.beatmap.getDifficultyData().getApproachRate()]);
+
 
         this.batch.begin();
 
