@@ -180,7 +180,7 @@ public class OsuBeatmapFileParser
 			str = str.trim();
 		}
 		if(hitObjectParts.length < 6)
-		{
+			{
 			return null;
 		}
 

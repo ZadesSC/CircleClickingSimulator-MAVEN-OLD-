@@ -115,4 +115,14 @@ public class BeatmapGraphicsManager
 
         this.batch.draw(hitCircle,  hitObjectX - hitCircle.getWidth()/2, hitObjectY - hitCircle.getHeight()/2);
     }
+
+    private void drawHitSliderObject(long elapsedTime, HitObject hitObject)
+    {
+
+    }
+
+    private void drawHitSpinnerObject(long elapsedTime, HitObject hitObject)
+    {
+
+    }
 }
